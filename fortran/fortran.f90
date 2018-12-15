@@ -1,3 +1,6 @@
+! Vicky Mohammad
+! syntax from https://www.youtube.com/watch?v=__2UgFNYgf8
+
 program fortrantut
   ! force to declare all var
   ! in fortran when defining a var
