@@ -26,8 +26,15 @@ program fortrantut
   print "(a7, i1)", "Double", kind(dbl_num)
   print "(a8, i1)", "Logical", kind(can_vote)
 
-  ! printing in fortran
-  ! code here... 9:18 https://www.youtube.com/watch?v=__2UgFNYgf8
+  ! printing in fortran, RiW
+  print *, "A number ", 10
+  print "(3i5)", 7, 6, 8
+  print "(3i5)", 7, 6, 8 ! five spaces between the digit
+  ! float, RfW
+  print "(2f8.5)", 3.1415, 1.234
+  print "(/, 2a8)", "Name", "Age" ! new lines
+  ! print "(e10, 3)", 123.456, 
+
 
   ! print 
   print *, "What's your name "
