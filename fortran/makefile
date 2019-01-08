@@ -7,7 +7,7 @@ fortran_compile:
 fortran_run: 
 	./a.out
 
-git: git_add git_commit git_push
+push: git_add git_commit git_push
 
 git_add:
 	git add -A
