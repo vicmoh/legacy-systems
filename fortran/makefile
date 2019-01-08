@@ -1,5 +1,5 @@
 # run
-run: fortran_compile fortran_run
+fortran: fortran_compile fortran_run
 # compile fortran
 fortran_compile: 
 	gfortran fortran.f90
@@ -7,7 +7,8 @@ fortran_compile:
 fortran_run: 
 	./a.out
 
-push: git_add git_commit git_push
+# github
+git: git_add git_commit git_push
 
 git_add:
 	git add -A
