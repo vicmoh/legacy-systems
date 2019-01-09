@@ -171,6 +171,6 @@ program fortrantut
   print *, "----- number of elements for x and y"
   print "(i2)", shape(a4)
   
-  ! test
+  ! hello
 
 end program fortrantut
