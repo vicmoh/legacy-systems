@@ -53,10 +53,15 @@ program fortrantut
   customers(2)%balance = 229.7
 
   ! printing function from the first function
-  print *, "printing from the first function"
+  print *, "----- printing from the first function -----"
   ans = get_sum(5, 4);
   print "(a8, i1)", "5 + 4 = ", ans
   
+  ! printing function from the second function
+  print *, "----- printing from the second function -----"
+  ans = get_sum2(5)
+  print "(a8, i1)", "5 + 4 = ", ans
+
   ! printing struct customer
   print *, "----- printing struct customer -----"
   do n = 1, 2
@@ -237,5 +242,19 @@ program fortrantut
       integer :: n1, n2, sum
       sum = n1 + n2
     end function get_sum
+
+    function get_sum2(n1, n2) result(sum)
+      implicit none
+      integer, intent(in) :: n1
+      integer, intent(in), optional :: n2
+      integer :: sum 
+      if(present(n2)) then
+        sum = n1 + n2
+      else
+        sum  = n1 + 1
+      end if
+    end function get_sum2
+
+
 
 end program fortrantut
