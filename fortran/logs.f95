@@ -170,8 +170,7 @@ program fortrantut
   print "(i2)", rank(a4)
   print *, "----- number of elements for x and y"
   print "(i2)", shape(a4)
-
   
+  ! test
 
-  
 end program fortrantut
