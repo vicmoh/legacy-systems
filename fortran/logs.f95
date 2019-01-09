@@ -33,9 +33,32 @@ program fortrantut
   character (len=30) :: str2 = " that is longer"
   character (len=30) :: str3;
   ! struct 
+  type Customer
+    character (len=40) :: name
+    integer :: age
+    real :: balance
+  end type Customer
+  type(Customer), dimension(5) :: customers
+  type(Customer) :: cust1
+
+  ! for object 2
+  cust1%name = "Sally Smith"
+  cust1%age = 34
+  cust1%balance = 320.45
+  customers(1) = cust1
+  ! for object 3
+  customers(2)%name = "Tom May"
+  customers(2)%age = 42
+  customers(2)%balance = 229.7
   
+  ! printing struct customer
+  print *, "----- printing struct customer -----"
+  do n = 1, 2
+    print *, customers(n)
+  end do
   
   ! trim
+  print *, "----- triming string -----"
   str3 = trim(str) // trim(str2)
   print *, str3
   print *, str(1:3) !strips string
