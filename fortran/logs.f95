@@ -40,6 +40,7 @@ program fortrantut
   end type Customer
   type(Customer), dimension(5) :: customers
   type(Customer) :: cust1
+  integer :: ans
 
   ! for object 2
   cust1%name = "Sally Smith"
@@ -50,6 +51,11 @@ program fortrantut
   customers(2)%name = "Tom May"
   customers(2)%age = 42
   customers(2)%balance = 229.7
+
+  ! printing function from the first function
+  print *, "printing from the first function"
+  ans = get_sum(5, 4);
+  print "(a8, i1)", "5 + 4 = ", ans
   
   ! printing struct customer
   print *, "----- printing struct customer -----"
@@ -224,5 +230,12 @@ program fortrantut
     print 200, cups, liters, quarts
     200 format(' ', i3, 2x, f5.3, 2x, f5.3)
   end do
+
+  contains
+    integer function get_sum(n1, n2)
+      implicit none 
+      integer :: n1, n2, sum
+      sum = n1 + n2
+    end function get_sum
 
 end program fortrantut
