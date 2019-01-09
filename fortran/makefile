@@ -1,9 +1,14 @@
 # run
-fortran: fortran_compile fortran_run
-# compile fortran
-fortran_compile:
+fortran: fortran_compile_log fortran_run
+
+fortran_overview: fortran_compile_overview fortran_run
+
+fortran_compile_overview:
+	gfortran -Wall overview.f95
+
+fortran_compile_log:
 	gfortran -Wall logs.f95
-# fun fortran
+
 fortran_run:
 	./a.out
 
