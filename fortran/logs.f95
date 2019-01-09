@@ -59,9 +59,9 @@ contains
         real, intent(in) :: DS, DL, TL, KERF
         real, intent(inout) :: V
         ! other vars
-        real :: inchPerFeetOfLog, segLog, scaleDown, feetsLessThanFour 
+        real :: T, SL, D, XI, L
         real :: XL, DEX, VADD, DC
-        integer :: a, b, c, numOfLogs
+        integer :: a, b, c
         ! for calc 
 
         ! volum to start
@@ -76,45 +76,47 @@ contains
             return
         end if
 
-        ! check the jack taper rate
-        if (DL == 0.0) then
-            inchPerFeetOfLog = 0.5
-        else 
-            inchPerFeetOfLog = 4.0*(DL-DS)/TL
+        ! 2nd routine
+        if (DL <= 0) then
+            T = 0.5
+        else
+            T=4.0*(DL-DS)/TL
         end if
-
-        ! found out how many full
+        
+        ! 3rd routine
         do a = 1, 20
-            if ((TL-(4.0*a)) < 0) then
-                numOfLogs = a - 1
-                segLog = 4 * numOfLogs
-                scaleDown = DS + (inchPerFeetOfLog/4.0) * (TL-segLog)
-                ! finds how many full feets
-                do b = 1, 4
-                    feetsLessThanFour = b
-                    if (segLog - TL + feetsLessThanFour <= 0) then
-                        continue
-                    else
-                        XL = feetsLessThanFour - 1.0
-                        DEX = DS + (inchPerFeetOfLog/4.0) * (TL - segLog - XL)
-                        VADD = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
-                        do c = 1, numOfLogs 
-                            DC = scaleDown + inchPerFeetOfLog * c - 1
-                            V = V + 0.22 * DC * DC - 0.71 * DC
-                        end do
-                        V = V + VADD
-                        if (KERF <= 0) then 
-                            stop
-                        else
-                            V = 0.905 * V
-                        end if
-                    end if
-                end do
-            else
+            if (TL - (4 * a) >= 0) then 
                 continue
             end if
+            L = a - 1
+            SL = 4 * L
+            print "(f5.5)", L
+            ! 4rth routine
+            D=DS+(T/4.0)*(TL-SL)
+            ! 5th routine
+            do b = 1, 4
+                XI = b
+                if (SL-TL+XI <= 0) then 
+                    continue
+                end if
+                ! 8th routine
+                XL=XI-1.0
+                DEX=DS+(T/4.0)*(TL-SL-XL)
+                VADD=0.055*XL*DEX*DEX-0.1775*XL*DEX
+                ! 9th routine
+                do c = 1, L
+                    DC=D+T*c-1
+                    V=V+0.22*DC*DC-0.71*DC
+                end do
+                V=V+VADD
+                ! 10th routine
+                if (KERF > 0) then
+                    return 
+                else
+                    V=0.905*V
+                    return
+                end if
+            end do
         end do
-
-
     end subroutine calcLOGjclark
 end program
