@@ -26,6 +26,21 @@ program fortrantut
   integer, dimension(1:9) :: a6 = (/ 1,2,3,4,5,6,7,8,9 /) !insert value
   integer, dimension(1:3, 1:3) :: a7 !2d array
   integer :: num_vals
+  integer :: num, cups
+  real :: liters, quarts
+  ! declaring string
+  character (len=30) :: str = "I'm a string"
+  character (len=30) :: str2 = " that is longer"
+  character (len=30) :: str3;
+  ! struct 
+  
+  
+  ! trim
+  str3 = trim(str) // trim(str2)
+  print *, str3
+  print *, str(1:3) !strips string
+  print "(a9, i1)", "index at ", index(str, "string") ! index at
+  print *, len(str) !length of string
 
   ! to check the size of the type
   print *, "----- size -----"
@@ -170,4 +185,21 @@ program fortrantut
   print "(i2)", rank(a4)
   print *, "----- number of elements for x and y"
   print "(i2)", shape(a4)
+
+  ! change format type and print
+  print *, "----- print with diff types -----"
+  do num = 1, 12
+    print 100, num, num * 7
+    100 format(i2, ' * 7', i3)
+  end do
+
+  ! format 
+  print "(/a18)", "Cups Literrs Quarts"
+  do cups = 1, 10
+    liters = cups * .236
+    quarts = cups * .208
+    print 200, cups, liters, quarts
+    200 format(' ', i3, 2x, f5.3, 2x, f5.3)
+  end do
+
 end program fortrantut
