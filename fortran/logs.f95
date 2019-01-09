@@ -255,6 +255,4 @@ program fortrantut
       end if
     end function get_sum2
 
-
-
 end program fortrantut
