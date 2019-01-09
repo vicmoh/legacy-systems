@@ -148,11 +148,11 @@ program fortrantut
   print "(l1)", any(a1 == a2, 1)
   print *, "----- count the num that is the same ------"
   print "(l1)", count(a1 == a2, 1)
-  print *, "----- max and min of array -----"
-  print "(i1)", maxval(a1)
-  print "(i1)", minval(a1)
-  print *, product(a1)
-  
+  print *, "----- other func for array -----"
+  print "(i1)", maxval(a2)
+  print "(i1)", minval(a2)
+  print "(i3)", product(a2)
+  print "(i2)", sum(a2)
 
   ! important
   print *, "----- implicit loop for array -----"
@@ -170,7 +170,4 @@ program fortrantut
   print "(i2)", rank(a4)
   print *, "----- number of elements for x and y"
   print "(i2)", shape(a4)
-  
-  ! hello
-
 end program fortrantut
