@@ -254,5 +254,4 @@ program fortrantut
         sum  = n1 + 1
       end if
     end function get_sum2
-
 end program fortrantut
