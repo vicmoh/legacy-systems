@@ -17,7 +17,7 @@ call getLOGdata(DS, DL, TL, KERF, V)
 call calcLOGjclark(DS, DL, TL, KERF, V)
 
 ! print volume result
-print "(a99, f10.5)", "The volume is ", V
+print "(a30, f10.5)", "The volume is ", V
 
 contains
     ! a function which reads the relevent log data 
@@ -68,55 +68,53 @@ contains
         V = 0.0
 
         ! if log is less the 4 feet exit
-        if (TL < 4) then
+        if (TL-4.0 < 0) then
             print *, "----------<<( Feedback )>>----------"
             print *, "TOTAL LOG LENGTH IS LESS THAN FOUR FEET"
             print *, "NO BOARD FOOT VOLUME WILL BE COMPUTED."
             print *, "------------------------------------"
             return
         end if
-
         ! 2nd routine
         if (DL <= 0) then
             T = 0.5
+            return
         else
-            T=4.0*(DL-DS)/TL
-        end if
-        
-        ! 3rd routine
-        do a = 1, 20
-            if (TL - (4 * a) >= 0) then 
-                continue
-            end if
-            L = a - 1
-            SL = 4 * L
-            print "(f5.5)", L
-            ! 4rth routine
-            D=DS+(T/4.0)*(TL-SL)
-            ! 5th routine
-            do b = 1, 4
-                XI = b
-                if (SL-TL+XI <= 0) then 
-                    continue
-                end if
-                ! 8th routine
-                XL=XI-1.0
-                DEX=DS+(T/4.0)*(TL-SL-XL)
-                VADD=0.055*XL*DEX*DEX-0.1775*XL*DEX
-                ! 9th routine
-                do c = 1, L
-                    DC=D+T*c-1
-                    V=V+0.22*DC*DC-0.71*DC
-                end do
-                V=V+VADD
-                ! 10th routine
-                if (KERF > 0) then
-                    return 
-                else
-                    V=0.905*V
-                    return
-                end if
+            T = 4.0 * (DL - DS) / TL
+            
+            ! 3rd routine
+            do I = 1, 20
+                if (TL - (4.0 * I) >= 0.0) exit
             end do
-        end do
+            L = I - 1
+            SL= (4.0 * L)
+            ! 4rth routine
+            D= DS + (T / 4.0) * (TL - SL)
+            ! 5th routine
+            do I = 1, 4
+                 XI = (I)
+                if (SL - TL + XI <= 0) exit
+            end do
+            ! 8th routine
+            XL = XI - 1.0
+            DEX = DS + (T / 4.0) * (TL - SL - XL)
+            VADD = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
+            ! 9th routine
+            do I = 1, L
+                DC=D+T*I-1
+                V = V + 0.22 * DC * DC - 0.71 * DC
+            end do
+            V = V + VADD
+            ! 10th routine
+            if (KERF > 0) then
+                return 
+            else
+                V = 0.905 * V
+                return
+            end if
+            return
+        end if
+      
+
     end subroutine calcLOGjclark
 end program
