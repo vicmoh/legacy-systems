@@ -16,9 +16,15 @@ program main
     call calcLOGjclark(DS, DL, TL, KERF, V)
 
     ! print volume result
+    print *, "-----<<( Output )>>-----"
+    print "(a1, f10.5)", "The board feet is ", V
     print "(a30, f10.5)", "The volume is ", V
+    print *, "------------------------"
 end program
 
+!----------------------------------------------
+! functions
+!----------------------------------------------
 
 ! a function which reads the relevent log data 
 ! required by calcLOGjclark() and calclLOGvolume()
@@ -41,12 +47,14 @@ end subroutine getLOGdata
 
 ! a function which calculates the volume of a log in
 ! cubic metres, using the data obtained by getLOGdata()
-function getLOGvolume(a1, a2, length) result(volume)
+function getLOGvolume(DS, DL, TL, length, V) result(volume)
     implicit none
-    real, intent(in) :: a1
-    real, intent(in) :: a2
-    real, intent(in) :: length
-    real :: volume
+    real, intent(in) :: DS, TL, length
+    real, intent(inout) :: V
+    real :: volume, mds, mdl, mtl, a1, a2
+    mds = (DS / 39.37) / 2.0
+    mdl = (DL / 39.37) / 2.0
+    mtl = TL / 3.2808
     volume = ((a1 + a2) / 2) * length
 end function getLOGvolume
 
