@@ -70,7 +70,7 @@ contains
             return
         end if
 
-        ! 
+        ! check if large end is taper
         if (DL <= 0) then
             T = 0.5
         else
