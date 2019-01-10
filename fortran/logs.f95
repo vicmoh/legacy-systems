@@ -87,30 +87,33 @@ contains
             L = a - 1
             SL = (4 * L)
             D = DS + (T/4.0) * (TL-SL)
-            ! find how mnay full feet
-            do b = 1, 4
-                XI = b
-                if ((SL-TL+XI) > 0 ) then 
-                    exit
-                end if
-            end do 
-            ! small end of logs 
-            XL = XI - 1.0
-            DEX = DS + (T/4.0) * (TL-SL-XL)
-            VADD = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
-            do c = 1, L
-                DC = D + T * (c-1)
-                V = V + 0.22 * DC * DC - 0.71 * DC
-            end do
-            V=V+VADD
-            ! kerf
-            if (KERF > 0) then
-                V = 0.905 * V
-                return
-            else
-                return
-            end if
         end do
+
+        ! find how mnay full feet
+        do b = 1, 4
+            XI = b
+            if ((SL-TL+XI) > 0 ) then 
+                exit
+            end if
+        end do 
+
+        ! small end of logs 
+        XL = XI - 1.0
+        DEX = DS + (T/4.0) * (TL-SL-XL)
+        VADD = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
+        do c = 1, L
+            DC = D + T * (c-1)
+            V = V + 0.22 * DC * DC - 0.71 * DC
+        end do
+        V=V+VADD
+        
+        ! kerf
+        if (KERF > 0) then
+            V = 0.905 * V
+            return
+        else
+            return
+        end if
 
         return
     end subroutine calcLOGjclark
