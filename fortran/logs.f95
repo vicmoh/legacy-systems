@@ -63,7 +63,7 @@ contains
         real :: XL, DEX, VADD, DC
         integer :: a, b, c, L
         
-        V = 0.0
+        ! return if less that four feet
         if (TL-4.0 < 0) then
             print *, "Total log length is less than four feet."
             print *, "No board foot volume will be computed."
@@ -80,14 +80,14 @@ contains
         ! find out how many full foot segment
         do a = 1, 20
             if (TL-(4*a) >= 0) then
-                continue
+                cycle
             else 
                 exit
             end if
-            L = a - 1
-            SL = (4 * L)
-            D = DS + (T/4.0) * (TL-SL)
         end do
+        L = a - 1
+        SL = (4 * L)
+        D = DS + (T/4.0) * (TL-SL)
 
         ! find how mnay full feet
         do b = 1, 4
@@ -106,7 +106,7 @@ contains
             V = V + 0.22 * DC * DC - 0.71 * DC
         end do
         V=V+VADD
-        
+
         ! kerf
         if (KERF > 0) then
             V = 0.905 * V
