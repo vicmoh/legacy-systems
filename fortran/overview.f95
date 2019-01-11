@@ -18,6 +18,7 @@ program fortrantut
   integer :: age;
   integer :: n = 0, m = 1
   integer :: secret_num = 7
+
   ! declarnig array
   integer, dimension(1:5) :: a1, a2, a3 !to call a1(x, y)
   real, dimension(1:50) :: array1
@@ -41,6 +42,15 @@ program fortrantut
   type(Customer), dimension(5) :: customers
   type(Customer) :: cust1
   integer :: ans
+
+  print *, name
+  print *, r_num2
+  print *, i_num2
+  print *, month
+  print *, array1
+  print *, secret_num
+  print *, a3
+
 
   ! for object 2
   cust1%name = "Sally Smith"
@@ -237,7 +247,7 @@ program fortrantut
   end do
 
   contains
-    integer function get_sum(n1, n2)
+     function get_sum(n1, n2) result(sum)
       implicit none 
       integer :: n1, n2, sum
       sum = n1 + n2
