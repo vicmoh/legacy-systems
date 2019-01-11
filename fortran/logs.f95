@@ -36,14 +36,30 @@ program main
 
     ! a function which calculates the volume of a log in
     ! cubic metres, using the data obtained by getLOGdata()
-    function getLOGvolume(DS, DL, TL) result(volume)
+    function getLOGvolume(DS, DL, TL, L) result(volume)
         implicit none
-        real, intent(in) :: DS, DL, TL
-        real :: volume, mds, mdl, mtl, a1, a2
+        real, intent(inout) :: DS, DL, TL, L
+        real :: tempDL, tempL 
+        real :: volume, mds, mdl, mtl, a1, a2, PI
+
+        ! assign values
+        tempL = L
+        tempDL = DL
+        PI = 3.14159265359
+        tempL = TL/4
+
+        ! get the DL and TL
+        if (tempDL <= 0) then 
+            tempDL = TL + (tempL * 0.5)
+        end if
+
+        ! calc the volume
         mds = (DS / 39.37) / 2.0
-        mdl = (DL / 39.37) / 2.0
+        mdl = (tempDL / 39.37) / 2.0
         mtl = TL / 3.2808
-        volume = ((a1 + a2) / 2) * TL
+        A1 = PI * mds * mds
+        A2 = PI * mdl * mdl
+        volume = ((a1 + a2) / 2) * mtl
     end function getLOGvolume
 
     ! a function which calculate the volume of a log in board
@@ -52,13 +68,12 @@ program main
     subroutine calcLOGjclark(DS, DL, TL, KERF, V)
         ! assing param vars
         implicit none 
-        real, intent(in) :: DS, DL, TL, KERF
-        real, intent(inout) :: V
+        real, intent(inout) :: DS, DL, TL, KERF, V
         ! other vars
-        real :: T, SL, D, XI
+        real :: T, SL, D, XI, L
         real :: XL, DEX, VADD, DC
-        integer :: a, b, c, L
-        real :: cubicVolume
+        integer :: a, b, c
+        real :: V2
         
         ! return if less that four feet
         if (TL-4.0 < 0) then
@@ -98,7 +113,7 @@ program main
         XL = XI - 1.0
         DEX = DS + (T/4.0) * (TL-SL-XL)
         VADD = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
-        do c = 1, L
+        do c = 1, int(L)
             DC = D + T * (c-1)
             V = V + 0.22 * DC * DC - 0.71 * DC
         end do
@@ -109,13 +124,13 @@ program main
             V = 0.905 * V
         end if
 
-        ! calc the volume
-        cubicVolume = getLOGvolume(DS, DL, TL)
+        ! get the volume
+        V2 = getLOGvolume(DS, DL, TL, L)
 
         ! print volume result
         print *, "-----<<( Output )>>-----"
         print *, "The board feet is ", V
-        print *, "The volume is ", cubicVolume
+        print *, "The volume is ", V2
         print *, "------------------------"
 
         return
