@@ -1,17 +1,14 @@
 # ada
-ada_test:
-	gnatmake ./ada/overview.adb
-
 ada: ada_compile ada_run
+
+ada_gnat:
+	gnatmake ./ada/overview.adb
 
 ada_compile:
 	gcc -c ./ada/overview.adb
 
 ada_run:
 	./overview
-
-ada_make:
-	gnatmake ./ada/overview.adb
 
 # fortran
 fortran: fortran_compile_log fortran_run
