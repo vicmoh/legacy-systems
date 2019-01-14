@@ -1,13 +1,17 @@
-# run
+# ada
+ada_compile:
+	gcc -c ./ada/overview.ada
+
+# fortran
 fortran: fortran_compile_log fortran_run
 
 fortran_overview: fortran_compile_overview fortran_run
 
 fortran_compile_overview:
-	gfortran -Wall overview.f95
+	gfortran -Wall ./fortran/overview.f95
 
 fortran_compile_log:
-	gfortran -Wall logs.f95
+	gfortran -Wall ./fortran/logs.f95
 
 fortran_run:
 	./a.out
