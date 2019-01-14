@@ -29,5 +29,5 @@ begin
     put("num1 + num2 = total");
     put_line(Integer' Image(total));
     put("overview world! " & " Concat.");
-    
+
 end overview;
