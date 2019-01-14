@@ -13,8 +13,9 @@ procedure overview is
     -- constraints var
     x : integer range 0..10;
 
-    -- dec numbers
+    -- test vars
     num1, num2, total : integer;
+    str : string;
 
 -- main
 begin
@@ -28,6 +29,9 @@ begin
     total := num1 + num2;
     put("num1 + num2 = total");
     put_line(Integer' Image(total));
+
+    str := "darth " & "vader";
+    put(str);
     put("overview world! " & " Concat.");
 
 end overview;
