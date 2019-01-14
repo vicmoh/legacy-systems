@@ -2,7 +2,7 @@
 default: ada_gnat ada_run
 
 # ada
-ada: ada_gnat 
+ada: ada_gnat ada_run 
 
 ada_gnat:
 	gnatmake ./ada/overview.adb

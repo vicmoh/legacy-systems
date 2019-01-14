@@ -17,20 +17,21 @@ procedure overview is
     num1, num2, total : integer;
     numberTest : integer := 0;
     counter : integer := 0;
-
--- main
 begin
+    -- print and assign value of the vars
     put_line("Print all var");
     radius := 1.0;
     circumference := 2.0;
     x := 0;
 
+    -- test assigment
     num1 := 1;
     num2 := 2;
     total := num1 + num2;
     put_line("num1 + num2 = total");
     put("total = "); put_line(integer' image(total));
     
+    -- if statement
     put_line("using if statement");
     if (total > 1) then 
         put("total = "); put_line(integer' image(total));
@@ -40,6 +41,7 @@ begin
 	put("total = "); put_line(integer' image(total));
     end if;
     
+    -- looping in ada
     put("looping");
     loop
 	counter := counter + 1;
@@ -47,6 +49,6 @@ begin
 	exit when (counter = 10);
     end loop;
 
+    -- you can print and concat
     put("overview world! " & " Concat.");
-
 end overview;
