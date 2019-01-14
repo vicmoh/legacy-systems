@@ -9,8 +9,7 @@ procedure overview is
     pi : constant float := 3.1415927;
     a, b, c : character := '.';
     h : constant string := "jedi";
-    falg : boolean := false;
-    success, failure : boolean;
+    flag : boolean := false;
     -- constraints var
     x : integer range 1..10;
 
@@ -19,11 +18,13 @@ procedure overview is
 
 -- main
 begin
-    total := num1 + num2;
+    put("Print all var");
+    radius := 1.0;
+    circumference := 2.0;
 
+    total := num1 + num2;
     put("num1 + num2 = total");
     put_line(Integer' Image(total));
-    
     put("overview world!");
     
 end overview;
