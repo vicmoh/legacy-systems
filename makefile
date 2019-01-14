@@ -1,5 +1,5 @@
 # ada
-ada: git_pull ada_compile ada_run
+ada: ada_compile ada_run
 
 ada_gnat:
 	gnatmake ./ada/overview.adb
