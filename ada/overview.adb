@@ -15,7 +15,7 @@ procedure overview is
 
     -- test vars
     num1, num2, total : integer;
-    str : string;
+    str : string range 0..64;
 
 -- main
 begin
