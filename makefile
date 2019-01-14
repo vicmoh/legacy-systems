@@ -1,5 +1,5 @@
 # ada
-ada: git_pull ada_compile ada_run git_account
+ada: git_pull ada_compile ada_run
 
 ada_gnat:
 	gnatmake ./ada/overview.adb
@@ -38,6 +38,3 @@ git_push:
 
 git_pull:
 	git pull
-
-git_account:
-	vicmoh
