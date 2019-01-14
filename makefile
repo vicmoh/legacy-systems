@@ -1,6 +1,11 @@
 # ada
+ada: ada_compile ada_run
+
 ada_compile:
 	gcc -c ./ada/overview.adb
+
+ada_run:
+	./overview
 
 ada_make:
 	gnatmake ./ada/overview.adb
