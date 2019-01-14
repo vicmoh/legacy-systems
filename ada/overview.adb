@@ -28,6 +28,6 @@ begin
     total := num1 + num2;
     put("num1 + num2 = total");
     put_line(Integer' Image(total));
-    put("overview world!");
+    put("overview world! " & " Concat.");
     
 end overview;
