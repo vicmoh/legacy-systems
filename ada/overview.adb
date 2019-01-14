@@ -15,7 +15,6 @@ procedure overview is
 
     -- test vars
     num1, num2, total : integer;
-    str : string range 0..64;
 
 -- main
 begin
@@ -30,7 +29,6 @@ begin
     put("num1 + num2 = total");
     put_line(Integer' Image(total));
 
-    str := "darth " & "vader";
     put(str);
     put("overview world! " & " Concat.");
 
