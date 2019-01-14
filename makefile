@@ -1,4 +1,7 @@
 # ada
+ada_test:
+	gnatmake ./ada/overview.adb
+
 ada: ada_compile ada_run
 
 ada_compile:
