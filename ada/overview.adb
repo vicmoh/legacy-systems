@@ -16,6 +16,7 @@ procedure overview is
     -- test vars
     num1, num2, total : integer;
     numberTest : integer := 0;
+    counter : integer := 0;
 
 -- main
 begin
@@ -28,7 +29,7 @@ begin
     num2 := 2;
     total := num1 + num2;
     put_line("num1 + num2 = total");
-    put_line(integer' image(total));
+    put("total = "); put_line(integer' image(total));
     
     put_line("using if statement");
     if (total > 1) then 
@@ -38,6 +39,13 @@ begin
     else
 	put("total = "); put_line(integer' image(total));
     end if;
+    
+    put("looping");
+    loop
+	counter := counter + 1;
+	put("counter = "); put_line(integer' image(counter));
+	exit when (counter = 10);
+    end loop;
 
     put("overview world! " & " Concat.");
 

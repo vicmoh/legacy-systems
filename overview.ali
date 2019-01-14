@@ -7,7 +7,7 @@ RV NO_FLOATING_POINT
 RV NO_IO
 RV SPARK_05
 
-U overview%b		overview.adb		65935322 NE OO SU IL
+U overview%b		overview.adb		6b8fa7d9 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
@@ -24,7 +24,7 @@ D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
-D overview.adb		20190114045324 abb52f52 overview%b
+D overview.adb		20190114050221 a5a9dba9 overview%b
 D system.ads		20151123113124 6326c08a system%s
 D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
 D s-exctab.ads		20140225151139 54135002 system.exception_table%s
@@ -44,12 +44,12 @@ X 3 a-inteio.ads
 18K13*Integer_Text_IO[8|46] 12|3w10 3r35
 X 7 a-textio.ads
 49K13*Text_IO 471e16 12|2w10 2r27
-242U14*Put 12|35s9 37s9 39s9 42s5
-263U14*Put_Line 12|22s5 30s5 31s5 33s5 35s26 37s26 39s26
+242U14*Put 12|32s5 36s9 38s9 40s9 43s5 46s9 50s5
+263U14*Put_Line 12|23s5 31s5 32s22 34s5 36s26 38s26 40s26 46s28
 X 12 overview.adb
-5U11*overview 5b11 44l5 44t13
-7f5 radius{float} 23m5
-7f13 circumference{float} 24m5
+5U11*overview 5b11 52l5 52t13
+7f5 radius{float} 24m5
+7f13 circumference{float} 25m5
 8f5 percentage{float}
 9f5 pi{float}
 10e5 a{character}
@@ -57,9 +57,10 @@ X 12 overview.adb
 10e11 c{character}
 11a5 h{string}
 12b5 flag{boolean}
-14i5 x{integer} 25m5
-17i5 num1{integer} 27m5 29r14
-17i11 num2{integer} 28m5 29r21
-17i17 total{integer} 29m5 31r29 34r9 35r50 36r12 37r50 39r50
+14i5 x{integer} 26m5
+17i5 num1{integer} 28m5 30r14
+17i11 num2{integer} 29m5 30r21
+17i17 total{integer} 30m5 32r46 35r9 36r50 37r12 38r50 40r50
 18i5 numberTest{integer}
+19i5 counter{integer} 45m9 45r20 46r52 47r20
 
