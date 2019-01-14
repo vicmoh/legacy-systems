@@ -19,7 +19,7 @@ procedure overview is
 
 -- main
 begin
-    put("Print all var");
+    put_line("Print all var");
     radius := 1.0;
     circumference := 2.0;
     x := 0;
@@ -27,8 +27,12 @@ begin
     num1 := 1;
     num2 := 2;
     total := num1 + num2;
-    put("num1 + num2 = total");
-    put_line(Integer' Image(total));
+    put_line("num1 + num2 = total");
+    put_line(integer' image(total));
+    
+    if (total > 1) then 
+        put("total = "); put(integer' image(total));
+    end if
 
     put("overview world! " & " Concat.");
 
