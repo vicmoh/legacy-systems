@@ -1,5 +1,5 @@
 # default
-default: git_pull ada_gnat ada_run
+default: ada_gnat ada_run
 
 # ada
 ada: ada_gnat 

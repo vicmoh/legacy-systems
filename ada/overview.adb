@@ -33,6 +33,10 @@ begin
     put_line("using if statement");
     if (total > 1) then 
         put("total = "); put_line(integer' image(total));
+    elsif (total > 2) then
+    	put("total = "); put_line(integer' image(total));
+    else
+	put("total = "); put_line(integer' image(total));
     end if;
 
     put("overview world! " & " Concat.");
