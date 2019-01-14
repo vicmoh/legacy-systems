@@ -1,8 +1,8 @@
 # default
-default: git_pull ada
+default: git_pull ada_gnat ada_run
 
 # ada
-ada: ada_gnat ada_run
+ada: ada_gnat 
 
 ada_gnat:
 	gnatmake ./ada/overview.adb
