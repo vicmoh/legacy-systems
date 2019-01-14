@@ -22,7 +22,7 @@ begin
     total := num1 + num2;
 
     put("num1 + num2 = total");
-    put_line(Image' Integer(total));
+    put_line(Integer' Image(total));
     
     put("overview world!");
     
