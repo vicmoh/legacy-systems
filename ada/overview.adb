@@ -21,7 +21,10 @@ begin
     put("Print all var");
     radius := 1.0;
     circumference := 2.0;
+    x := 0;
 
+    num1 := 1;
+    num2 := 2;
     total := num1 + num2;
     put("num1 + num2 = total");
     put_line(Integer' Image(total));
