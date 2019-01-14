@@ -18,9 +18,9 @@ num1, num2, total : integer;
 begin
     total := num1 + num2;
 
-    put("num1 + num2 = total");
-    put(total);
+    Put("num1 + num2 = total");
+    Put(total);
     
-    put("overview world!");
+    Put("overview world!");
     
 end overview;
