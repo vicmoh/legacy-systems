@@ -11,7 +11,7 @@ procedure overview is
     h : constant string := "jedi";
     flag : boolean := false;
     -- constraints var
-    x : integer range 1..10;
+    x : integer range 0..10;
 
     -- dec numbers
     num1, num2, total : integer;
