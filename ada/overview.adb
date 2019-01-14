@@ -15,6 +15,7 @@ procedure overview is
 
     -- test vars
     num1, num2, total : integer;
+    numberTest : integer := 0;
 
 -- main
 begin
