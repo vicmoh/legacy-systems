@@ -32,7 +32,7 @@ begin
     
     if (total > 1) then 
         put("total = "); put(integer' image(total));
-    end if
+    end if;
 
     put("overview world! " & " Concat.");
 
