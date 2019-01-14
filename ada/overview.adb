@@ -30,6 +30,7 @@ begin
     put_line("num1 + num2 = total");
     put_line(integer' image(total));
     
+    put_line("using if statement");
     if (total > 1) then 
         put("total = "); put_line(integer' image(total));
     end if;
