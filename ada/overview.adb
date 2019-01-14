@@ -22,6 +22,24 @@ procedure overview is
 	name : string(1 .. 64);
 	dynamicName : unbounded_string;
 	nameLength : integer;
+	-- enum
+	type colour is (red, yellow, blue, green);
+	type status is (on, off);
+
+	-- create function example
+	function sign(x: integer) return integer is
+	begin
+    	if x > 0 then
+        	put_line("x > 0");
+        	return 1;
+    	elsif x < 0 then
+        	put_line("x < 0");
+        	return -1; 
+    	else
+        	put_line("x = 0");
+        	return 0;
+    	end if;
+	end sign;
 begin
     -- print and assign value of the vars
     put_line("Print all var");
@@ -84,7 +102,12 @@ begin
 	put("enter name: ");
 	get_line(name, nameLength);
 	put("your name is "); put_line(name(1..nameLength));
+	
+	-- calling the function
+	put_line("----- calling func sign() -----");
+	put("result: "); put_line(integer' image(sign(counter)));	
 
     -- you can print and concat
     put("overview world! " & " Concat.");
 end overview;
+
