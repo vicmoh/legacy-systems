@@ -1,6 +1,8 @@
+-- import library
 with Ada.Text_IO; use Ada.Text_IO;
-procedure overview is
+with Ada.Integer_Text_IO use Ada.Integer_Text_IO;
 
+procedure overview is
     -- dec var
     radius, circumference : float;
     percentage : float := 0.0;
@@ -12,9 +14,10 @@ procedure overview is
     -- constraints var
     x : integer range 1..10;
 
--- dec numbers
-num1, num2, total : integer;
+    -- dec numbers
+    num1, num2, total : integer;
 
+-- main
 begin
     total := num1 + num2;
 
