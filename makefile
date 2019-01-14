@@ -1,6 +1,9 @@
 # ada
 ada_compile:
-	gcc -c ./ada/overview.ada
+	gcc -c ./ada/overview.adb
+
+ada_make:
+	gnatmake ./ada/overview.adb
 
 # fortran
 fortran: fortran_compile_log fortran_run
