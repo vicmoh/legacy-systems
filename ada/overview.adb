@@ -31,7 +31,7 @@ begin
     put_line(integer' image(total));
     
     if (total > 1) then 
-        put("total = "); put(integer' image(total));
+        put("total = "); put_line(integer' image(total));
     end if;
 
     put("overview world! " & " Concat.");
