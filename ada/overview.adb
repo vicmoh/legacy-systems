@@ -14,7 +14,6 @@ procedure overview is
     flag : boolean := false;
     -- constraints var
     x : integer range 0..10;
-
     -- test vars
     num1, num2, total : integer;
     numberTest : integer := 0;
@@ -25,6 +24,9 @@ procedure overview is
 	-- enum
 	type colour is (red, yellow, blue, green);
 	type status is (on, off);
+	-- array 
+	-- you can also do this: array2: array (1..5) of integer;
+	array1: array (integer range 1..5) of integer;
 
 	-- create function example
 	function sign(x: integer) return integer is
@@ -40,6 +42,14 @@ procedure overview is
         	return 0;
     	end if;
 	end sign;
+
+	-- in out function
+	procedure increment(x: in out integer) is
+		begin
+		x := x + 1;
+	end increment;
+
+-- main
 begin
     -- print and assign value of the vars
     put_line("Print all var");
@@ -53,6 +63,12 @@ begin
     total := num1 + num2;
     put_line("num1 + num2 = total");
     put("total = "); put_line(integer' image(total));
+
+	-- testing array
+	array1 := (1,2,3,4,5);
+	for i in 1..5 loop
+		put("array1["); put(array1(i), width => 0); put_line("]");
+	end loop;
     
     -- if statement
     put_line("using if statement");

@@ -11,7 +11,7 @@ RV NO_NESTED_FINALIZATION
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U overview%b		overview.adb		e6f7d4b7 NE OO SU IL
+U overview%b		overview.adb		f8179c82 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -42,7 +42,7 @@ D a-tiinio.ads		20180524051734 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20180524051736 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051734 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051734 e53d8b8e interfaces.c_streams%s
-D overview.adb		20190114150646 3ee1cefc overview%b
+D overview.adb		20190114190123 200186c9 overview%b
 D system.ads		20180524051735 085b6ffb system%s
 D s-atocou.ads		20180524051736 b45c2d8d system.atomic_counters%s
 D s-crtl.ads		20180524051734 0ebbdb71 system.crtl%s
@@ -73,20 +73,24 @@ X 9 a-string.ads
 16K13*Strings 35e16 19|4r10 4r37 5r10 5r45
 X 11 a-strunb.ads
 76K21*Unbounded 491e26 19|4w18 4r45 5r18 5r53
-79R9*Unbounded_String<5|43R9> 474e14 19|23r23
+79R9*Unbounded_String<5|43R9> 474e14 19|22r23
 X 12 a-suteio.ads
 39K31*Text_IO 61e34 19|5w28 5r63
 X 14 a-textio.ads
 49K13*Text_IO 471e16 19|2w10 2r27
-242U14*Put 19|55s5 60s9 62s9 64s9 71s17 80s17 92s17 98s17 102s9 104s9 108s9
-. 111s5
-249U14*Get_Line 19|103s9
-263U14*Put_Line 19|33s17 36s17 39s17 45s5 54s5 55s22 58s5 60s26 62s26 64s26
-. 68s5 71s36 76s5 80s36 89s9 92s30 96s9 98s30 104s31 107s9 108s26
+73I12*Field{integer}
+242U14*Put 19|65s5 70s17 76s9 78s9 80s9 87s17 96s17 108s17 114s17 118s9 120s9
+. 124s9 127s5
+249U14*Get_Line 19|119s9
+263U14*Put_Line 19|35s17 38s17 41s17 55s5 64s5 65s22 70s61 74s5 76s26 78s26
+. 80s26 84s5 87s36 92s5 96s36 105s9 108s30 112s9 114s30 120s31 123s9 124s26
+X 15 a-tiinio.ads
+66U14*Put 19|70s33[6|18]
+68i7 Width{14|73I12} 19|70r48[6|18]
 X 19 overview.adb
-7U11*overview 7b11 112l5 112t13
-9f5 radius{float} 46m5
-9f13 circumference{float} 47m5
+7U11*overview 7b11 128l5 128t13
+9f5 radius{float} 56m5
+9f13 circumference{float} 57m5
 10f5 percentage{float}
 11f5 pi{float}
 12e5 a{character}
@@ -94,28 +98,32 @@ X 19 overview.adb
 12e11 c{character}
 13a5 h{string}
 14b5 flag{boolean}
-16i5 x{integer} 48m5
-19i5 num1{integer} 51m5 53r14
-19i11 num2{integer} 52m5 53r21
-19i17 total{integer} 53m5 55r46 59r8 60r50 61r11 62r50 64r50
-20i5 numberTest{integer}
-21i5 counter{integer} 70m17 70r28 71r60 72r28 77m5 78r11 79m17 79r28 80r60
-. 82r20 88m9 91m17 91r28 108r55
-22a9 name{string} 103m18 104r40
-23r9 dynamicName{11|79R9}
-24i9 nameLength{integer} 103m24 104r48
-26E14 colour 26e50
-26n25 red{26E14}
-26n30 yellow{26E14}
-26n38 blue{26E14}
-26n44 green{26E14}
-27E14 status 27e33
-27n25 on{27E14}
-27n29 off{27E14}
-30V18 sign{integer} 30b18 30>23 42l13 42t17 108s50
-30i23 x{integer} 32r12 35r15
-90i13 i{integer} 92r54
-97i13 i{integer} 98r54
+16i5 x{integer} 58m5
+18i5 num1{integer} 61m5 63r14
+18i11 num2{integer} 62m5 63r21
+18i17 total{integer} 63m5 65r46 75r8 76r50 77r11 78r50 80r50
+19i5 numberTest{integer}
+20i5 counter{integer} 86m17 86r28 87r60 88r28 93m5 94r11 95m17 95r28 96r60
+. 98r20 104m9 107m17 107r28 124r55
+21a9 name{string} 119m18 120r40
+22r9 dynamicName{11|79R9}
+23i9 nameLength{integer} 119m24 120r48
+25E14 colour 25e50
+25n25 red{25E14}
+25n30 yellow{25E14}
+25n38 blue{25E14}
+25n44 green{25E14}
+26E14 status 26e33
+26n25 on{26E14}
+26n29 off{26E14}
+29a9 array1(integer) 68m9 70r37
+32V18 sign{integer} 32b18 32>23 44l13 44t17 124s50
+32i23 x{integer} 34r12 37r15
+47U19 increment 47b19 47=29 50l13 50t22
+47i29 x{integer} 49m17 49r22
+69i13 i{integer} 70r44
+106i13 i{integer} 108r54
+113i13 i{integer} 114r54
 X 20 system.ads
 67M9*Address
 X 28 s-memory.ads
