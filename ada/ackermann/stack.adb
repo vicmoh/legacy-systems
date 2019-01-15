@@ -1,13 +1,9 @@
 with Ada.Text_IO; use Ada.Text_IO;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
-with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
-with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
-with Ada.Float_Text_IO; use Ada.Float_Text_IO;
-with ada.numerics.elementary_functions; use ada.numerics.elementary_functions;
 
 package body stack is
     -- dec vars
-    type stack_list is array(1..256000) of integer;
+    maxSize : constant integer := 9999999;
+	type stack_list is array(1..maxSize) of integer;
 
     -- the constructor
     type class_stack is
@@ -20,9 +16,9 @@ package body stack is
     -- push to stack
     procedure stack_push(value : in integer) is
     begin
-        if this.head = 256000 then
+        if this.head = maxSize then
             put_line("The stack is full.");
-        else
+		else
             this.head := this.head + 1;
             this.list(this.head) := value;
         end if;
