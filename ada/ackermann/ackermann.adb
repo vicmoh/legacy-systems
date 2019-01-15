@@ -7,6 +7,12 @@ with Ada.Calendar; use Ada.Calendar;
 with stackADT; use stackADT;
 
 procedure ackermann is
+    -- dec vars for the main
+    num1, num2 : integer;
+    num1_length, num2_length : integer;
+    startTime, endTime : time;
+    result : integer;
+
     -- calc ackermann to calculate the ackermann
     function calcAckermann(firstValue, secondValue : integer) return integer is
         first, second : integer;
@@ -40,12 +46,6 @@ procedure ackermann is
         -- return
         return second;
     end calcAckermann;
-
-    -- dec vars for the main
-    num1, num2 : integer;
-    num1_length, num2_length : integer;
-    startTime, endTime : time;
-    result : integer;
 
 -- main begins
 begin

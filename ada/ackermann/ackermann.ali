@@ -11,7 +11,7 @@ RV NO_IO
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U ackermann%b		ackermann.adb		0d10663d NE OO SU IL
+U ackermann%b		ackermann.adb		f3d79fda NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.calendar%s	a-calend.adb		a-calend.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -25,7 +25,7 @@ Z system.concat_3%s	s-conca3.adb		s-conca3.ali
 Z system.img_int%s	s-imgint.adb		s-imgint.ali
 Z system.img_lld%s	s-imglld.adb		s-imglld.ali
 
-D ackermann.adb		20190115051815 bcb3d401 ackermann%b
+D ackermann.adb		20190115053532 42742de6 ackermann%b
 D ada.ads		20180524051735 76789da1 ada%s
 D a-calend.ads		20180524051736 372815c8 ada.calendar%s
 D a-charac.ads		20180524051735 2d3ec45b ada.characters%s
@@ -71,23 +71,23 @@ D s-unstyp.ads		20180524051735 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180524051736 1b7d22d2 system.wch_con%s
 X 1 ackermann.adb
 9U11*ackermann 9b11 66l5 66t14
-11V14 calcAckermann{integer} 11b14 11>28 11>40 42l9 42t22 59s15
-11i28 firstValue{integer} 14r18
-11i40 secondValue{integer} 15r19
-12i9 first{integer} 14m9 16r20 23m23 25r16 31r28 34r16 36r28 37r28
-12i16 second{integer} 15m9 26m17 26r27 29r16 30m17 34r31 35m17 35r27 41r16
-45i5 num1{integer} 54m9 59r29
-45i11 num2{integer} 56m9 59r35
-46i5 num1_length{integer} 54r15
-46i18 num2_length{integer} 56r15
-47i5 startTime{3|42I9} 58m5 64r44
-47i16 endTime{3|42I9} 60m5 64r56
-48i5 result{integer} 59m5 63r48
+11i5 num1{integer} 54m9 59r29
+11i11 num2{integer} 56m9 59r35
+12i5 num1_length{integer} 54r15
+12i18 num2_length{integer} 56r15
+13i5 startTime{3|42I9} 58m5 64r44
+13i16 endTime{3|42I9} 60m5 64r56
+14i5 result{integer} 59m5 63r48
+17V14 calcAckermann{integer} 17b14 17>28 17>40 48l9 48t22 59s15
+17i28 firstValue{integer} 20r18
+17i40 secondValue{integer} 21r19
+18i9 first{integer} 20m9 22r20 29m23 31r16 37r28 40r16 42r28 43r28
+18i16 second{integer} 21m9 32m17 32r27 35r16 36m17 40r31 41m17 41r27 47r16
 X 2 ada.ads
 16K9*Ada 1|2r6 2r23 3r6 3r31 4r6 4r33 5r6 5r41 6r6 6r24 2|20e8
 X 3 a-calend.ads
 36K13*Calendar 1|6w10 6r28 3|398e17
-42I9*Time<211I9> 1|47r26
+42I9*Time<211I9> 1|13r26
 56V13*Clock{42I9} 1|58s18 60s16
 103V14*"-"{duration} 1|64s54
 211I9 Time_Rep<long_long_integer>
@@ -107,7 +107,7 @@ X 17 a-tiinio.ads
 56U14*Get 1|54s5[8|18] 56s5[8|18]
 X 21 stackadt.ads
 1K9*stackADT 1|7w6 7r20 21|5e13
-2U15*stack_push 1|16s9 31s17 36s17 37s17
-3U15*stack_pop 1|23s13
-4V14*stack_isEmpty{boolean} 1|19s16
+2U15*stack_push 1|22s9 37s17 42s17 43s17
+3U15*stack_pop 1|29s13
+4V14*stack_isEmpty{boolean} 1|25s16
 

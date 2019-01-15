@@ -21,8 +21,8 @@ procedure stackADT is
         if this.head = 256000 then
             put_line("The stack is full.");
         else
-            this.head = this.head + 1;
-            this.item(this.head) := value;
+            this.head := this.head + 1;
+            this.list(this.head) := value;
         end if;
     end stack_push;
 
@@ -32,8 +32,8 @@ procedure stackADT is
         if this.head = 0 then
             put_line("The stack is empty.");
         else
-            value := this.item(this.head);
-            this.head = this.head - 1;
+            value := this.list(this.head);
+            this.head := this.head - 1;
         end if;
     end stack_pop;
 
