@@ -45,7 +45,7 @@ procedure overview is
 
 	-- in out function
 	procedure increment(x: in out integer) is
-		begin
+	begin
 		x := x + 1;
 	end increment;
 
