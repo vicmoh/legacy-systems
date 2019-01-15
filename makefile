@@ -1,25 +1,17 @@
 # default
-default: ada_gnat ada_run
+default: ada
 
 # ada
 ada: ada_gnat ada_run 
 
 ada_gnat:
-	gnatmake ./ada/overview.adb
-
-ada_compile:
-	gcc -c ./ada/overview.adb
+	gnatmake -Wall ./ada/ackermann/overview.adb
 
 ada_run:
 	./overview
 
 # fortran
 fortran: fortran_compile_log fortran_run
-
-fortran_overview: fortran_compile_overview fortran_run
-
-fortran_compile_overview:
-	gfortran -Wall ./fortran/overview.f95
 
 fortran_compile_log:
 	gfortran -Wall ./fortran/logs.f95
