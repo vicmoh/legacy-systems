@@ -13,7 +13,7 @@ procedure ackermann is
     startTime, endTime : time;
     result : integer;
 
-    -- calc ackermann to calculate the ackermann
+    -- calc ackermann function to calculate the ackermann
     function calcAckermann(firstValue, secondValue : integer) return integer is
         first, second : integer;
     begin
