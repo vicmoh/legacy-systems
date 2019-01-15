@@ -3,12 +3,16 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
+with Ada.Calendar; use Ada.Calendar;
 with stackADT; use stackADT;
 
 procedure ackermann is
     -- calc ackermann to calculate the ackermann
-    function calcAckermann(first, second : integer) return integer is
+    function calcAckermann(firstValue, secondValue : integer) return integer is
+        first, second : integer;
     begin
+        first := firstValue;
+        second := secondValue;
         stack_push(first);
         loop
             -- exit when is empty
@@ -33,27 +37,30 @@ procedure ackermann is
                 stack_push(first);
             end if;
         end loop;
+        -- return
+        return second;
     end calcAckermann;
 
     -- dec vars for the main
     num1, num2 : integer;
     num1_length, num2_length : integer;
     startTime, endTime : time;
+    result : integer;
 
 -- main begins
 begin
     -- ask for the first number
     put("Enter the first number: ");
-    get_line(num1, num1_length);
+    get(num1, num1_length);
     put("Enter the second number: ");
-    get_line(num2, num2_length);
+    get(num2, num2_length);
     -- calc and check for the time
     startTime := clock;
     result := calcAckermann(num1, num2);
     endTime := clock;
     -- print the output
     put_line("-----<<<( OUTPUT )>>-----");
-    put_line("The result is " & integer' image(result), width => 0);
-    put_line("It takes " & duration' image(startTime - endTime) & " seconds.", width => 0);
+    put_line("The result is " & integer' image(result));
+    put_line("It takes " & duration' image(startTime - endTime) & " seconds.");
     put_line("-------------------------");
 end ackermann;
