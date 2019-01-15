@@ -5,10 +5,10 @@ default: ada
 ada: ada_gnat ada_run 
 
 ada_gnat:
-	gnatmake -Wall ./ada/ackermann/overview.adb
+	gnatmake -Wall ./ada/ackermann/ackermann.adb
 
 ada_run:
-	./overview
+	./ackermann
 
 # fortran
 fortran: fortran_compile_log fortran_run
