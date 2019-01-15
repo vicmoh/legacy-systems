@@ -1,8 +1,5 @@
 V "GNAT Lib v2018"
 M P W=b
-A -mtune=core2
-A -mmacosx-version-min=10.14.2
-A -fPIC
 P ZX
 
 RN
@@ -14,7 +11,7 @@ RV NO_IO
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U ackermann%b		ackermann.adb		f3d79fda NE OO SU IL
+U ackermann%b		ackermann.adb		42ba81cb NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.calendar%s	a-calend.adb		a-calend.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -22,13 +19,13 @@ W ada.strings%s		a-string.ads		a-string.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
 W ada.strings.unbounded.text_io%s  a-suteio.adb	a-suteio.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
-W stackadt%s		stackadt.adb		stackadt.ali
+W stack%s		stack.adb		stack.ali
 Z system.concat_2%s	s-conca2.adb		s-conca2.ali
 Z system.concat_3%s	s-conca3.adb		s-conca3.ali
 Z system.img_int%s	s-imgint.adb		s-imgint.ali
 Z system.img_lld%s	s-imglld.adb		s-imglld.ali
 
-D ackermann.adb		20190115054429 42742de6 ackermann%b
+D ackermann.adb		20190115060801 d2590e9c ackermann%b
 D ada.ads		20180524051735 76789da1 ada%s
 D a-calend.ads		20180524051736 372815c8 ada.calendar%s
 D a-charac.ads		20180524051735 2d3ec45b ada.characters%s
@@ -48,7 +45,7 @@ D a-tiinio.ads		20180524051734 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20180524051736 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051734 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051734 e53d8b8e interfaces.c_streams%s
-D stackadt.ads		20190115051904 5e9dbdbf stackadt%s
+D stack.ads		20190115060617 7fdd80d4 stack%s
 D system.ads		20180524051735 085b6ffb system%s
 D s-atocou.ads		20180524051736 b45c2d8d system.atomic_counters%s
 D s-conca2.ads		20180524051735 02a0d7d0 system.concat_2%s
@@ -108,8 +105,8 @@ X 16 a-textio.ads
 263U14*Put_Line 1|62s5 63s5 64s5 65s5
 X 17 a-tiinio.ads
 56U14*Get 1|54s5[8|18] 56s5[8|18]
-X 21 stackadt.ads
-1K9*stackADT 1|7w6 7r20 21|5e13
+X 21 stack.ads
+1K9*stack 1|7w6 7r17 21|5e10
 2U15*stack_push 1|22s9 37s17 42s17 43s17
 3U15*stack_pop 1|29s13
 4V14*stack_isEmpty{boolean} 1|25s16
