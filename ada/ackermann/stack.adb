@@ -5,7 +5,7 @@ with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
 with Ada.Float_Text_IO; use Ada.Float_Text_IO;
 with ada.numerics.elementary_functions; use ada.numerics.elementary_functions;
 
-procedure body stackADT is
+procedure body stack is
     -- dec vars
     type stack_list is array(1..256000) of integer;
 
@@ -48,4 +48,4 @@ procedure body stackADT is
             return false;
         end if;
     end stack_isEmpty;
-end stackADT;
+end stack;
