@@ -3,7 +3,7 @@ with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
 
-procedure stack is
+procedure stackADT is
     -- dec vars
     type stack_list is array(1..256000) of integer;
 
@@ -46,4 +46,4 @@ procedure stack is
             return false;
         end if;
     end stack_isEmpty;
-end stack;
+end stackADT;
