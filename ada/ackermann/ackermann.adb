@@ -4,7 +4,7 @@ with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
 with Ada.Calendar; use Ada.Calendar;
-with stackADT; use stackADT;
+with stack; use stack;
 
 procedure ackermann is
     -- dec vars for the main
