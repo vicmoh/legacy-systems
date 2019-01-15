@@ -2,8 +2,10 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
+with Ada.Float_Text_IO; use Ada.Float_Text_IO;
+with ada.numerics.elementary_functions; use ada.numerics.elementary_functions;
 
-procedure stackADT is
+procedure body stackADT is
     -- dec vars
     type stack_list is array(1..256000) of integer;
 

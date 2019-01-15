@@ -1,5 +1,8 @@
 V "GNAT Lib v2018"
 M P W=b
+A -mtune=core2
+A -mmacosx-version-min=10.14.2
+A -fPIC
 P ZX
 
 RN
@@ -25,7 +28,7 @@ Z system.concat_3%s	s-conca3.adb		s-conca3.ali
 Z system.img_int%s	s-imgint.adb		s-imgint.ali
 Z system.img_lld%s	s-imglld.adb		s-imglld.ali
 
-D ackermann.adb		20190115053532 42742de6 ackermann%b
+D ackermann.adb		20190115054429 42742de6 ackermann%b
 D ada.ads		20180524051735 76789da1 ada%s
 D a-calend.ads		20180524051736 372815c8 ada.calendar%s
 D a-charac.ads		20180524051735 2d3ec45b ada.characters%s
