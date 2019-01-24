@@ -15,7 +15,7 @@ program fortrantut
   integer :: i_num1 = 0, i_num2 = 0
   logical :: can_vote = .true.
   character (len = 10) :: month
-  integer :: age;
+  integer :: age = 12;
   integer :: n = 0, m = 1
   integer :: secret_num = 7
 
@@ -195,7 +195,7 @@ program fortrantut
   ! assign at once
   print *, "----- assign all at once -----"
   a2 = (/1,2,3,4,5/)
-  print "(5i1)", (a2(m), m = 1, 6)
+  ! print "(5i1)", (a2(m), m = 1, 6)
   ! reshape dimension to 3 by 3
   print *, "----- reshape an array -----"
   a7 = reshape(a6, (/ 3, 3 /))
