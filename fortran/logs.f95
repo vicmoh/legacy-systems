@@ -72,10 +72,10 @@ program main
         implicit none 
         real, intent(inout) :: diameterInsideBark, logsLargeEnds, totalLogLength, kerf, boardFootVolume
         ! other vars
-        real :: T, SL, D, XI, L
-        real :: XL, DEX, VADD, DC
+        real :: taperRate, segLog, diameterScale, XI, numLogs
+        real :: XL, DEX, volumeAdded, DC
         integer :: i
-        real :: V2
+        real :: cubicResult
         
         ! return if less that four feet
         if (totalLogLength-4.0 < 0) then
@@ -86,9 +86,9 @@ program main
 
         ! check if large end is taper
         if (logsLargeEnds <= 0) then
-            T = 0.5
+            taperRate = 0.5
         else
-            T = 4.0 * (logsLargeEnds-diameterInsideBark) / totalLogLength
+            taperRate = 4.0 * (logsLargeEnds-diameterInsideBark) / totalLogLength
         end if
 
         ! find out how many full foot segment
@@ -99,27 +99,27 @@ program main
                 exit
             end if
         end do
-        L = i - 1
-        SL = (4 * L)
-        D = diameterInsideBark + (T/4.0) * (totalLogLength-SL)
+        numLogs = i - 1
+        segLog = (4 * numLogs)
+        diameterScale = diameterInsideBark + (taperRate/4.0) * (totalLogLength-segLog)
 
         ! find how manay full feet
         do i = 1, 4
             XI = i
-            if ((SL-totalLogLength+XI) > 0 ) then 
+            if ((segLog-totalLogLength+XI) > 0 ) then 
                 exit
             end if
         end do 
 
         ! small end of logs 
         XL = XI - 1.0
-        DEX = diameterInsideBark + (T/4.0) * (totalLogLength-SL-XL)
-        VADD = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
-        do i = 1, int(L)
-            DC = D + T * (i-1)
+        DEX = diameterInsideBark + (taperRate/4.0) * (totalLogLength-segLog-XL)
+        volumeAdded = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
+        do i = 1, int(numLogs)
+            DC = diameterScale + taperRate * (i-1)
             boardFootVolume = boardFootVolume + 0.22 * DC * DC - 0.71 * DC
         end do
-        boardFootVolume=boardFootVolume+VADD
+        boardFootVolume=boardFootVolume+volumeAdded
 
         ! kerf
         if (kerf > 0) then
@@ -127,12 +127,12 @@ program main
         end if
 
         ! get the volume
-        V2 = getLOGvolume(diameterInsideBark, logsLargeEnds, totalLogLength, L)
+        cubicResult = getLOGvolume(diameterInsideBark, logsLargeEnds, totalLogLength, numLogs)
 
         ! print volume result
         print *, "-----<<( Output )>>-----"
         print *, "The board feet is ", boardFootVolume
-        print *, "The volume is ", V2
+        print *, "The volume is ", cubicResult
         print *, "------------------------"
 
         return
