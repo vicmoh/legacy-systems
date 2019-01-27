@@ -52,7 +52,7 @@ program main
 
         ! get the logsLargeEnds and totalLogLength
         if (tempDL <= 0) then 
-            tempDL = totalLogLength + (tempLength * 0.5)
+            tempDL = diameterInsideBark + (tempLength * 0.5)
         end if
 
         ! calc the volume
