@@ -72,8 +72,8 @@ program main
         implicit none 
         real, intent(inout) :: diameterInsideBark, logsLargeEnds, totalLogLength, kerf, boardFootVolume
         ! other vars
-        real :: taperRate, segLog, diameterScale, XI, numLogs
-        real :: XL, DEX, volumeAdded, DC
+        real :: taperRate, segLog, diameterScale, numOfFullFeet, numLogs
+        real :: tempFullFeet, DiaEnds, volumeAdded, DiaCalc
         integer :: i
         real :: cubicResult
         
@@ -105,19 +105,19 @@ program main
 
         ! find how manay full feet
         do i = 1, 4
-            XI = i
-            if ((segLog-totalLogLength+XI) > 0 ) then 
+            numOfFullFeet = i
+            if ((segLog-totalLogLength+numOfFullFeet) > 0 ) then 
                 exit
             end if
         end do 
 
         ! small end of logs 
-        XL = XI - 1.0
-        DEX = diameterInsideBark + (taperRate/4.0) * (totalLogLength-segLog-XL)
-        volumeAdded = 0.055 * XL * DEX * DEX - 0.1775 * XL * DEX
+        tempFullFeet = numOfFullFeet - 1.0
+        DiaEnds = diameterInsideBark + (taperRate/4.0) * (totalLogLength-segLog-tempFullFeet)
+        volumeAdded = 0.055 * tempFullFeet * DiaEnds * DiaEnds - 0.1775 * tempFullFeet * DiaEnds
         do i = 1, int(numLogs)
-            DC = diameterScale + taperRate * (i-1)
-            boardFootVolume = boardFootVolume + 0.22 * DC * DC - 0.71 * DC
+            DiaCalc = diameterScale + taperRate * (i-1)
+            boardFootVolume = boardFootVolume + 0.22 * DiaCalc * DiaCalc - 0.71 * DiaCalc
         end do
         boardFootVolume=boardFootVolume+volumeAdded
 
