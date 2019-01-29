@@ -43,11 +43,11 @@ program main
         real :: tempDL, tempLength 
         real :: volume, radiusSmallEnd, radiusLargeEnd, logLength
         real :: areaSmallEnd, areaLargeEnd, PI
+        parameter PI = (3.14159265359)
 
         ! assign values
         tempLength = length
         tempDL = logsLargeEnds
-        PI = 3.14159265359
         tempLength = totalLogLength/4
 
         ! get the logsLargeEnds and totalLogLength
@@ -141,8 +141,8 @@ program main
 
         ! print the volume and board feet
         print *, "-----<<( Output )>>-----"
-        print *, "The board feet is ", boardFootVolume
-        print *, "The volume is ", cubicResult
+        print "(A, F10.2)", "The board feet is ", boardFootVolume
+        print "(A, F10.2)", "The volume is ", cubicResult
         print *, "------------------------"
 
         return
