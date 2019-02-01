@@ -43,7 +43,7 @@ program main
         real :: tempDL, tempLength 
         real :: volume, radiusSmallEnd, radiusLargeEnd, logLength
         real :: areaSmallEnd, areaLargeEnd, PI
-        parameter PI = (3.14159265359)
+        PI = (3.14159265359)
 
         ! assign values
         tempLength = length
