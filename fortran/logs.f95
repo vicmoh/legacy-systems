@@ -23,13 +23,13 @@ program main
         implicit none
         real, intent(inout) :: diameterInsideBark, logsLargeEnds, totalLogLength, kerf, boardFootVolume
         ! ask for log length
-        print *, "LOG’S SCALING DIAMETER (INCHES): "
+        print *, "ENTER LOG’S SCALING DIAMETER (DS) IN INCHES: "
         read *, diameterInsideBark
-        print *, "DIB AT LOG’S LARGE END (INCHES) (0.0 IF 1/2 INCH TAPER): "
+        print *, "ENTER DIB AT LOG’S LARGE END (DL) IN INCHES (0.0 IF 1/2 INCH TAPER): "
         read *, logsLargeEnds
-        print *, "TOTAL LOG LENGTH (FEET): "
+        print *, "ENTER TOTAL LOG LENGTH (TL) IN FEET: "
         read *, totalLogLength
-        print *, "KERF: "
+        print *, "ENTER KERF: "
         read *, kerf 
         ! assign to the struct
         boardFootVolume = 0.0

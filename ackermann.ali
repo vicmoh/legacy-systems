@@ -22,7 +22,7 @@ Z system.img_int%s	s-imgint.adb		s-imgint.ali
 Z system.img_lld%s	s-imglld.adb		s-imglld.ali
 Z system.val_int%s	s-valint.adb		s-valint.ali
 
-D ackermann.adb		20190115081317 26f1ac99 ackermann%b
+D ackermann.adb		20190130022624 26f1ac99 ackermann%b
 D ada.ads		20180524051735 76789da1 ada%s
 D a-calend.ads		20180524051736 372815c8 ada.calendar%s
 D a-except.ads		20180524051735 291912d5 ada.exceptions%s
