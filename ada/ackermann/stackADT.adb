@@ -1,11 +1,11 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
 package body stackADT is
-    -- dec vars
+    -- declare variables
     maxSize : constant integer := 9999999;
 	type stack_list is array(1..maxSize) of integer;
 
-    -- the constructor
+    -- the stack constructor
     type class_stack is
         record
         head : integer := 0;
@@ -13,7 +13,7 @@ package body stackADT is
         end record;
     this : class_stack;
 
-    -- push to stack
+    -- procedure to push item in the stack
     procedure push(value : in integer) is
     begin
         if this.head = maxSize then
@@ -24,7 +24,7 @@ package body stackADT is
         end if;
     end push;
 
-    -- pop from stack
+    -- proceedure for poping item from stack
     procedure pop(value : out integer) is
     begin
         if this.head = 0 then
@@ -35,7 +35,24 @@ package body stackADT is
         end if;
     end pop;
 
-    -- predicate function to see if empty
+    -- function to set the head
+    function top return integer is
+    begin
+        if this.head = 0 then
+            -- stack is empty
+            return 0;
+        else
+            return this.list(this.head);
+        end if;
+    end top;
+
+    -- reset the stack and clear by setting the head to 0
+    procedure clear is
+    begin
+        this.head := 0;
+    end clear;
+
+    -- predicate function to check if it is empty 
     function isEmpty return boolean is
     begin
         if this.head = 0 then

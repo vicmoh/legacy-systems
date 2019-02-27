@@ -9,11 +9,11 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U stackadt%b		stackadt.adb		5626b0ef OO PK IL
+U stackadt%b		stackadt.adb		0b2f08a7 OO PK IL
 W ada%s			ada.ads			ada.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 
-U stackadt%s		stackadt.ads		52926aa4 EE NE OO PK IL
+U stackadt%s		stackadt.ads		638b1152 EE NE OO PK IL
 
 D ada.ads		20180524051735 76789da1 ada%s
 D a-except.ads		20180524051735 291912d5 ada.exceptions%s
@@ -24,8 +24,8 @@ D a-textio.ads		20180524051736 881db35a ada.text_io%s
 D a-unccon.ads		20180524051736 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051734 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051734 e53d8b8e interfaces.c_streams%s
-D stackadt.ads		20190227040519 52926aa4 stackadt%s
-D stackadt.adb		20190227040715 8ca96911 stackadt%b
+D stackadt.ads		20190227042237 638b1152 stackadt%s
+D stackadt.adb		20190227042043 e0b9aaaf stackadt%b
 D system.ads		20180524051735 085b6ffb system%s
 D s-crtl.ads		20180524051734 0ebbdb71 system.crtl%s
 D s-exctab.ads		20180524051736 54135002 system.exception_table%s
@@ -45,18 +45,21 @@ X 6 a-textio.ads
 49K13*Text_IO 471e16 11|1w10 1r27
 263U14*Put_Line 11|20s13 31s13
 X 10 stackadt.ads
-1K9*stackADT 5l5 5e13 11|3b14 47l5 47t13
+1K9*stackADT 7l5 7e13 11|3b14 64l5 64t13
 2U15*push 2>20 11|17b15 25l9 25t13
 2i20 value{integer} 11|17b20 23r37
 3U15*pop 3<19 11|28b15 36l9 36t12
 3i19 value{integer} 11|28b19 33m13
-4V14*isEmpty{boolean} 11|39b14 46l9 46t16
+4U15*clear 11|50b15 53l9 53t14
+5V14*isEmpty{boolean} 11|56b14 63l9 63t16
+6V14*top{integer} 11|39b14 47l9 47t12
 X 11 stackadt.adb
 5i5 maxSize{integer} 6r37 19r24
 6A14 stack_list(integer)<integer> 12r16
 9R10 class_stack 13e19 14r12
 11i9*head{integer} 19r17 22m18 22r31 23r28 30r17 33r37 34m18 34r31 41r17
-12a9*list{6A14} 23m18 33r27
+. 45r35 52m14 58r17
+12a9*list{6A14} 23m18 33r27 45r25
 14r5 this{9R10} 19r12 22m13 22r26 23m13 23r23 30r12 33r22 33r32 34m13 34r26
-. 41r12
+. 41r12 45r20 45r30 52m9 58r12
 
