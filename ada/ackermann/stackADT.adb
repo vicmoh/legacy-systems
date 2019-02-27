@@ -1,6 +1,6 @@
 with Ada.Text_IO; use Ada.Text_IO;
 
-package body stack is
+package body stackADT is
     -- dec vars
     maxSize : constant integer := 9999999;
 	type stack_list is array(1..maxSize) of integer;
@@ -14,7 +14,7 @@ package body stack is
     this : class_stack;
 
     -- push to stack
-    procedure stack_push(value : in integer) is
+    procedure push(value : in integer) is
     begin
         if this.head = maxSize then
             put_line("The stack is full.");
@@ -22,10 +22,10 @@ package body stack is
             this.head := this.head + 1;
             this.list(this.head) := value;
         end if;
-    end stack_push;
+    end push;
 
     -- pop from stack
-    procedure stack_pop(value : out integer) is
+    procedure pop(value : out integer) is
     begin
         if this.head = 0 then
             put_line("The stack is empty.");
@@ -33,15 +33,15 @@ package body stack is
             value := this.list(this.head);
             this.head := this.head - 1;
         end if;
-    end stack_pop;
+    end pop;
 
     -- predicate function to see if empty
-    function stack_isEmpty return boolean is
+    function isEmpty return boolean is
     begin
         if this.head = 0 then
             return true;
         else
             return false;
         end if;
-    end stack_isEmpty;
-end stack;
+    end isEmpty;
+end stackADT;

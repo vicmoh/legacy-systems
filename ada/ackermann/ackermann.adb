@@ -1,7 +1,7 @@
 -- import library
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Calendar; use Ada.Calendar;
-with stack; use stack;
+with stackADT; use stackADT;
 
 procedure ackermann is
     -- dec vars for the main
@@ -17,24 +17,24 @@ procedure ackermann is
     begin
         first := firstValue;
         second := secondValue;
-        stack_push(first);
+        push(first);
         loop
             -- exit when is empty
-            if stack_isEmpty then
+            if isEmpty then
                 exit;
             end if;
             -- pop firs
-            stack_pop(first);
+            pop(first);
             -- first case
             if first = 0 then
                 second := second + 1;
             elsif second = 0 then
                 second := 1;
-                stack_push(first - 1);
+                push(first - 1);
             else
                 second := second - 1;
-                stack_push(first - 1);
-                stack_push(first);
+                push(first - 1);
+                push(first);
             end if;
         end loop;
         -- return
