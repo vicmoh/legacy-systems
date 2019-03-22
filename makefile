@@ -1,5 +1,5 @@
 # default
-default: ada
+default: cob
 
 # ada
 ada: ada_gnat ada_run 
@@ -21,8 +21,8 @@ fortran_run:
 
 # cobol
 cob:
-	cobc -x -free -Wall ./cobol/overview.cob -o ./cobol/overview
-	./cobol/overview
+	cobc -x -free -Wall ./cobol/$(file).cob -o ./cobol/$(file)
+	./cobol/$(file)
 
 # github
 git: git_add git_commit git_push
