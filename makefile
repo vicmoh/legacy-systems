@@ -21,8 +21,8 @@ fortran_run:
 
 # cobol
 cob:
-	cobc -x -free -Wall ./cobol/$(file).cob -o ./cobol/$(file)
-	./cobol/$(file)
+	cobc -x -free -Wall ./cobol/$(run).cob -o ./cobol/run
+	./cobol/run
 
 # github
 git: git_add git_commit git_push
