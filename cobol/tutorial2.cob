@@ -26,8 +26,9 @@
     *> type of the variable.
        working-storage section.
        77 ws-a picture 9(2).
-       77 ws-b pic a(5).
-       77 ws-c pic x(10).
+       77 ws-b pic 9(2)
+       77 ws-c pic 9(2)
+       77 ws-x pic x.
 
        linkage section.
        screen section.
@@ -35,14 +36,16 @@
        procedure division.
        main-routine section.
        main-para.
-           display "Hello World!".
+    *>    Do some arithmetic.
+           display "Let us do arithmetic.".
            accept ws-a.
            accept ws-b.
-           accept ws-c.
-           display ws-a.
-           display ws-b.
-           display ws-c.
-           display "Type something to exit.".
+           add ws-a to ws-b.
+    *>    Shoe some result from the arithmetic.
+           display "Result is", ws-b.
+           display "Type x to exit.".
+           accept ws-x.
+           
            stop run.
 
 
