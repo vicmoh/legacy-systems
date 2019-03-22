@@ -19,6 +19,11 @@ fortran_compile_log:
 fortran_run:
 	./a.out
 
+# cobol
+cob:
+	cobc -x -free -Wall ./cobol/overview.cob -o ./cobol/overview
+	./cobol/overview
+
 # github
 git: git_add git_commit git_push
 
