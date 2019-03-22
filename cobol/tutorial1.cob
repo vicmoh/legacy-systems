@@ -1,6 +1,6 @@
     *>    header of the program
        identification division.
-       program-id. cob1.
+       program-id. tutorial1.
     
     *>    environtment division
        environment division.
