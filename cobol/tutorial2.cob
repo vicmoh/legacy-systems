@@ -25,7 +25,7 @@
     *> Every variables must have level number. The piciture is the 
     *> type of the variable.
        working-storage section.
-       77 ws-a pic 9(2).
+       77 ws-a picture 9(2).
        77 ws-b pic a(5).
        77 ws-c pic x(10).
 
