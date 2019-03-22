@@ -26,8 +26,8 @@
     *> type of the variable.
        working-storage section.
        77 ws-a picture 9(2).
-       77 ws-b pic 9(2)
-       77 ws-c pic 9(2)
+       77 ws-b pic 9(2).
+       77 ws-c pic 9(2).
        77 ws-x pic x.
 
        linkage section.
@@ -41,11 +41,13 @@
            accept ws-a.
            accept ws-b.
            add ws-a to ws-b.
+           subtract ws-a from ws-b
     *>    Shoe some result from the arithmetic.
-           display "Result is", ws-b.
+           display " Result is ", ws-b.
            display "Type x to exit.".
            accept ws-x.
-           
+    *>    Stop the program.
            stop run.
-
+    *>    2:57
+    *> https://www.youtube.com/watch?v=ucsayDHPdI4&list=PLByAM0wHjwJkcCAvgXSdvnvbOb3BIFUnB&index=4
 
