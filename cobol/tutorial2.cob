@@ -15,9 +15,11 @@
        special-names.
 
        input-output section.
+
        file-control.
        
        data division.
+
        file section.
 
     *>    Working section are where we can store the variables.
@@ -30,6 +32,7 @@
        77 ws-c pic x(10).
 
        linkage section.
+       
        screen section.
 
        procedure division.
