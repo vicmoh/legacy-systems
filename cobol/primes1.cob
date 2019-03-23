@@ -20,6 +20,8 @@
     *>    data division
        DATA DIVISION.
        FILE SECTION.
+       FD INPUT-FILE.
+           
 
        WORKING-STORAGE SECTION.
            77 N PICTURE S9(9).
