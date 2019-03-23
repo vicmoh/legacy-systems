@@ -41,9 +41,10 @@
            accept ws-a.
            accept ws-b.
            add ws-a to ws-b.
-           subtract ws-a from ws-b
+           subtract ws-a from ws-b.
     *>    Shoe some result from the arithmetic.
-           display " Result is ", ws-b.
+           display " Result ws-a ", ws-a.
+           display " Result ws-b ", ws-b.
            display "Type x to exit.".
            accept ws-x.
     *>    Stop the program.
