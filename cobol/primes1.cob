@@ -16,7 +16,6 @@
            ORGANIZATION IS LINE SEQUENTIAL.
        SELECT OUTPUT-FILE ASSIGN TO "primes.out"
            ORGANIZATION IS LINE SEQUENTIAL.
-       
 
     *>    data division
        DATA DIVISION.
