@@ -12,9 +12,9 @@
     *>    input output section
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-       SELECT INPUT-FILE ASSIGN TO "primes.dat"
+       SELECT INPUT-FILE ASSIGN TO "./cobol/assets/primes.dat"
            ORGANIZATION IS LINE SEQUENTIAL.
-       SELECT OUTPUT-FILE ASSIGN TO "primes.out"
+       SELECT OUTPUT-FILE ASSIGN TO "./cobol/assets/primes.out"
            ORGANIZATION IS LINE SEQUENTIAL.
 
     *>    data division
