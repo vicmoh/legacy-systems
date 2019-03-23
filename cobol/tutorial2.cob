@@ -25,10 +25,11 @@
     *> Every variables must have level number. The piciture is the 
     *> type of the variable.
        working-storage section.
-       77 ws-a picture 9(2).
-       77 ws-b pic 9(2).
-       77 ws-c pic 9(2).
-       77 ws-x pic x.
+       77 a picture 9(2).
+       77 b pic 9(2).
+       77 result pic 9.
+       77 x pic x.
+       77 operator pic x.
 
        linkage section.
        screen section.
@@ -37,18 +38,17 @@
        main-routine section.
        main-para.
     *>    Do some arithmetic.
-           display "Let us do arithmetic.".
-           accept ws-a.
-           accept ws-b.
-           add ws-a to ws-b.
-           subtract ws-a from ws-b.
-    *>    Shoe some result from the arithmetic.
-           display " Result ws-a ", ws-a.
-           display " Result ws-b ", ws-b.
-           display "Type x to exit.".
-           accept ws-x.
+       Display "Enter number 1:".
+       accept a.
+       Display "Enter number 2:". 
+       accept b.
+    *>    Calculate the two number.
+       move 0 to result.
+       add a to result.
+       add b to result.
+       display "Result: ", result.
     *>    Stop the program.
-           stop run.
+       stop run.
     *>    2:57
     *> https://www.youtube.com/watch?v=ucsayDHPdI4&list=PLByAM0wHjwJkcCAvgXSdvnvbOb3BIFUnB&index=4
 
