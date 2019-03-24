@@ -58,62 +58,73 @@
            02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
        
        PROCEDURE DIVISION.
+           COMPUTE BACK-TO-TOP = 0.
            COMPUTE EOF = 0.
-           COMPUTE LOOP = LOOP.
+           COMPUTE LOOP = 1.
            OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
            WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
            WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
 
+        PERFORM UNTIL EOF = 1
            *> READ INPUT FILE
-       1. READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF.
+           READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
 
            *> IF IT IS END OF FILE CLOSE THE PROGRAM
            IF EOF = 1
                CLOSE INPUT-FILE, OUTPUT-FILE
                STOP RUN
-           END-IF.
+           END-IF
            
            *> MOVE IN-N TO N
            COMPUTE N = IN-N
-           DISPLAY N.
+           DISPLAY "N = ", N
 
            *> WRITE ERROR MESSAGE
            IF N IS NOT > 1
                MOVE IN-N TO OUT-N
                WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
-               GO TO 1
-           END-IF.
-
-           *> B1. IF N IS LESS THAN 4 GO TO 3
-           IF N IS NOT < 4
-               COMPUTE R = 2
-
-               *> THIS IS 2.
-               COMPUTE LOOP = 1
-               PERFORM UNTIL LOOP IS NOT = 1
-
-                   DIVIDE R INTO N GIVING I
-                   MULTIPLY R BY I
-
-                   *> GO TO B2
-                   IF I IS NOT = N
-                       ADD 1 TO R
-                   ELSE
-                       COMPUTE OUT-N-2 = IN-N
-                       WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
-                       GO TO 1
-                   END-IF
-
-                   *> IF R IS LESS THAN N GO TO 2.
-                   IF R < N
-                       COMPUTE LOOP = 1
-                   ELSE
-                       COMPUTE LOOP = 0
-                   END-IF
-               END-PERFORM
-           END-IF.
-
-           *> THIS IS 3.
-           COMPUTE OUT-N-3 = IN-N.
-           WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
-           GO TO 1.
+           ELSE
+               *> B1. IF N IS LESS THAN 4 GO TO 3
+               IF N IS NOT < 4
+                   COMPUTE R = 2
+    
+                   *> THIS IS 2.
+                   COMPUTE LOOP = 1
+                   PERFORM UNTIL LOOP IS NOT = 1
+    
+                       DIVIDE R INTO N GIVING I
+                       MULTIPLY R BY I
+    
+                       *> GO TO B2
+                       IF I IS NOT = N
+                           ADD 1 TO R
+                       ELSE
+                           DISPLAY "NOT-A-PRIME-LINE = ", NOT-A-PRIME-LINE
+                           COMPUTE OUT-N-2 = IN-N
+                           WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
+                           COMPUTE BACK-TO-TOP = 1
+                       END-IF
+    
+                       *> IF R IS LESS THAN N GO TO 2.
+                       IF BACK-TO-TOP = 1
+                           COMPUTE LOOP = 0
+                       ELSE IF R < N
+                           COMPUTE LOOP = 1
+                       ELSE
+                           COMPUTE LOOP = 0
+                       END-IF
+                   END-PERFORM
+               END-IF
+    
+               *> GO BACK TO THE TO OF THE PROGRAM
+               IF BACK-TO-TOP = 1
+                   COMPUTE BACK-TO-TOP = 0
+                   DISPLAY "CONTINUE"
+               ELSE
+                   *> THIS IS 3.
+                   DISPLAY "PRIME-LINE = ", PRIME-LINE
+                   COMPUTE OUT-N-3 = IN-N
+                   WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
+               END-IF
+           END-IF
+       END-PERFORM.
