@@ -34,6 +34,7 @@
            77 WS-EOF PIC X.
            77 LOOP PIC 9.
            77 EOF PIC 9.
+           77 BACK-TO-TOP PIC 9.
        01 IN-CARD.
            02 IN-N PICTURE 9(9).
            02 FILLER PICTURE X(71).
@@ -57,8 +58,8 @@
            02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
        
        PROCEDURE DIVISION.
-           MOVE 0 TO EOF.
-           MOVE 1 TO LOOP.
+           COMPUTE EOF = 0.
+           COMPUTE LOOP = LOOP.
            OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
            WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
            WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
@@ -73,7 +74,7 @@
            END-IF.
            
            *> MOVE IN-N TO N
-           MOVE IN-N TO N.
+           COMPUTE N = IN-N
            DISPLAY N.
 
            *> WRITE ERROR MESSAGE
@@ -85,16 +86,10 @@
 
            *> B1. IF N IS LESS THAN 4 GO TO 3
            IF N IS NOT < 4
-               MOVE 2 TO R
+               COMPUTE R = 2
 
-               *> IF R IS LESS THAN N GO TO 2.
-               IF R < N
-                   MOVE 1 TO LOOP
-               ELSE
-                   MOVE 0 TO LOOP
-               END-IF
-
-               *> THIS IS 2.    
+               *> THIS IS 2.
+               COMPUTE LOOP = 1
                PERFORM UNTIL LOOP IS NOT = 1
 
                    DIVIDE R INTO N GIVING I
@@ -104,21 +99,21 @@
                    IF I IS NOT = N
                        ADD 1 TO R
                    ELSE
-                       MOVE IN-N TO OUT-N-2
+                       COMPUTE OUT-N-2 = IN-N
                        WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
                        GO TO 1
                    END-IF
 
                    *> IF R IS LESS THAN N GO TO 2.
                    IF R < N
-                       MOVE 1 TO LOOP
+                       COMPUTE LOOP = 1
                    ELSE
-                       MOVE 0 TO LOOP
+                       COMPUTE LOOP = 0
                    END-IF
                END-PERFORM
            END-IF.
 
            *> THIS IS 3.
-           3. MOVE IN-N TO OUT-N-3.
+           COMPUTE OUT-N-3 = IN-N.
            WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
            GO TO 1.
