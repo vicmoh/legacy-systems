@@ -33,6 +33,7 @@
            77 TO-BE-PRINT PIC X(9).
            77 WS-EOF PIC X.
            77 LOOP PIC 9.
+           77 EOF PIC 9.
        01 IN-CARD.
            02 IN-N PICTURE 9(9).
            02 FILLER PICTURE X(71).
@@ -56,11 +57,20 @@
            02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
        
        PROCEDURE DIVISION.
+           MOVE 0 TO EOF.
            MOVE 1 TO LOOP.
            OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
            WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
            WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
-       1. READ INPUT-FILE INTO IN-CARD AT END GO TO FINISH.
+
+           *> READ INPUT FILE
+       1. READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF.
+
+           *> IF IT IS END OF FILE CLOSE THE PROGRAM
+           IF EOF = 1
+               CLOSE INPUT-FILE, OUTPUT-FILE
+               STOP RUN
+           END-IF.
            
            *> MOVE IN-N TO N
            MOVE IN-N TO N.
@@ -112,7 +122,3 @@
            3. MOVE IN-N TO OUT-N-3.
            WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
            GO TO 1.
-
-       FINISH.
-           CLOSE INPUT-FILE, OUTPUT-FILE.
-           STOP RUN.
