@@ -86,10 +86,10 @@
 
                *> THIS IS 2.    
                PERFORM UNTIL LOOP IS NOT = 1
-               
+
                    DIVIDE R INTO N GIVING I
                    MULTIPLY R BY I
-                   
+
                    *> GO TO B2
                    IF I IS NOT = N
                        ADD 1 TO R
@@ -107,12 +107,12 @@
                    END-IF
                END-PERFORM
            END-IF.
-            
+
            *> THIS IS 3.
            3. MOVE IN-N TO OUT-N-3.
            WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
            GO TO 1.
-           
+
        FINISH.
            CLOSE INPUT-FILE, OUTPUT-FILE.
            STOP RUN.
