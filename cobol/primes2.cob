@@ -67,45 +67,50 @@
            DISPLAY N.
 
            *> WRITE ERROR MESSAGE
-           IF N < 2
+           IF N IS NOT > 1
                MOVE IN-N TO OUT-N
                WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
-               *> CONTINUE
                GO TO 1
            END-IF.
 
            *> B1. IF N IS LESS THAN 4 GO TO 3
-           IF N > 3
+           IF N IS NOT < 4
                MOVE 2 TO R
 
-               *> IF R IS LESS THAN N GO TO 2.    
-               PERFORM UNTIL LOOP < 1
+               *> IF R IS LESS THAN N GO TO 2.
+               IF R < N
+                   MOVE 1 TO LOOP
+               ELSE
+                   MOVE 0 TO LOOP
+               END-IF
+
+               *> THIS IS 2.    
+               PERFORM UNTIL LOOP IS NOT = 1
+               
                    DIVIDE R INTO N GIVING I
                    MULTIPLY R BY I
                    
                    *> GO TO B2
-                   IF I IS NOT EQUAL TO N
+                   IF I IS NOT = N
                        ADD 1 TO R
                    ELSE
                        MOVE IN-N TO OUT-N-2
                        WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
-                       *> CONTINUE
                        GO TO 1
                    END-IF
 
                    *> IF R IS LESS THAN N GO TO 2.
-                   SUBTRACT 1 FROM N
-                   IF R > N
+                   IF R < N
+                       MOVE 1 TO LOOP
+                   ELSE
                        MOVE 0 TO LOOP
                    END-IF
                END-PERFORM
-
-           END-IF. 
+           END-IF.
             
            *> THIS IS 3.
-           MOVE IN-N TO OUT-N-3.
+           3. MOVE IN-N TO OUT-N-3.
            WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE.
-           *> CONTINUE
            GO TO 1.
            
        FINISH.
