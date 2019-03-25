@@ -138,13 +138,14 @@
                *> IF IT'S END OF FILE, SET EOF AS TRUE.
                IF USER-OPTION = "1"
                    COMPUTE IN-N = USER-STANDARD-INPUT
-               ELSE IF USER-OPTION = "2"
+               ELSE
                    READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
                END-IF
                *> IF IT IS END OF FILE CLOSE THE IO.
                *> THEN STOP THE PROGRAM.
-               IF EOF = 1
+               IF EOF = 1 AND USER-OPTION = "2"
                    DISPLAY "WRITING TO A FILE RESULT COMPLETED."
+                   DISPLAY " "
                    CLOSE INPUT-FILE, OUTPUT-FILE
                    STOP RUN
                END-IF
@@ -158,7 +159,7 @@
                    MOVE IN-N TO OUT-N
                    IF USER-OPTION = "1"
                        DISPLAY "RESULT: ILLEGAL INPUT."
-                   ELSE IF USER-OPTION = "2"
+                   ELSE
                        WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
                    END-IF
                ELSE
@@ -180,7 +181,7 @@
                            ELSE
                                IF USER-OPTION = "1"
                                    DISPLAY "RESULT: IT IS NOT A PRIME NUMBER."
-                               ELSE IF USER-OPTION = "2"
+                               ELSE
                                    COMPUTE OUT-N-2 = IN-N
                                    WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
                                END-IF
@@ -206,7 +207,7 @@
                    ELSE
                        IF USER-OPTION = "1"
                            DISPLAY "RESULT: IT IS A PRIME NUMBER."
-                       ELSE IF USER-OPTION = "2"
+                       ELSE
                            COMPUTE OUT-N-3 = IN-N
                            WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
                        END-IF
