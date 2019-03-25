@@ -153,6 +153,8 @@
                *> THEN STOP THE PROGRAM.
                IF EOF = 1 AND USER-OPTION = "2"
                    DISPLAY "WRITING TO A FILE RESULT COMPLETED."
+                   DISPLAY "TERMINATING PROGRAM..."
+                   DISPLAY "GOOD BYE."
                    DISPLAY " "
                    CLOSE INPUT-FILE, OUTPUT-FILE
                    STOP RUN
