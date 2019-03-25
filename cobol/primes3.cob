@@ -40,7 +40,8 @@
            77 LOOP PIC 9.
            77 EOF PIC 9.
            77 BACK-TO-TOP PIC 9.
-           77 USER-INPUT PIC X(9).
+           77 USER-STANDARD-INPUT PIC 9(9).
+           77 USER-OPTION PIC X(9).
        *> DECLARE A RECORD WHEN READING FROM USER DATA.
        01 IN-CARD.
            02 IN-N PICTURE 9(9).
@@ -95,7 +96,7 @@
        *> FUNCTION FOR ASKING USER INPUT FOR THE 2 OPTIONS.
        MAIN-USER-INPUT-FUNCTION.
            *> LOOP UNTIL THE USER ENTER EXIT
-           PERFORM UNTIL USER-INPUT = "X" OR USER-INPUT = "x"
+           PERFORM UNTIL USER-OPTION = "X" OR USER-OPTION = "x"
                *> DISPLAY THE OPTIONS TO THE USER.
                DISPLAY " "
                DISPLAY "-------------------------------------------------"
@@ -105,20 +106,20 @@
                DISPLAY "X -> EXIT."
                DISPLAY "-------------------------------------------------"
                DISPLAY "ENTER AN OPTION:"
-               ACCEPT USER-INPUT
+               ACCEPT USER-OPTION
                DISPLAY " "
                *> LET USER KNOW PROGRAM IS EXITING.
-               IF USER-INPUT = "X" OR USER-INPUT = "x"
+               IF USER-OPTION = "X" OR USER-OPTION = "x"
                    DISPLAY "TERMINATING PROGRAM..."
                END-IF
            END-PERFORM.
 
        *> FUNCTION FOR THE OPTION OF THE STANDARD INPUT OPTION.
        STANDARD-INPUT-OPTION-FUNCTION.
-           IF USER-INPUT = "1"
+           IF USER-OPTION = "1"
                DISPLAY " "
                DISPLAY "ENTER A PRIME NUMBER: "
-               ACCEPT USER-INPUT
+               ACCEPT USER-STANDARD-INPUT
                DISPLAY " "
            END-IF.
        
@@ -126,11 +127,17 @@
        PRIME-FUNCTION.
            *> LOOP THE PROGRAM UNTIL END OF FILE IS TRUE.
            PERFORM UNTIL EOF = 1
-               *> READ INPUT FILE IN EACH LINE.
+               *> IF IT'S USER INPUT OPTION THEN USE THAT NUMBER.
+               *> ELSE READ INPUT FILE IN EACH LINE.
                *> THEN ASSIGN EACH LINE TO THE IN-CARD.
                *> IF IT'S END OF FILE, SET EOF AS TRUE.
-               READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
-    
+               IF USER-OPTION = "1"
+                   COMPUTE EOF = 1
+                   COMPUTE IN-N = USER-STANDARD-INPUT
+               ELSE
+                   READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
+               END-IF
+               
                *> IF IT IS END OF FILE CLOSE THE IO.
                *> THEN STOP THE PROGRAM.
                IF EOF = 1
