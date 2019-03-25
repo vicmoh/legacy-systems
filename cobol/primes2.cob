@@ -69,9 +69,9 @@
        *> WHERE THE PROGRAM PERFORMED ACTUAL LOGIC AND INSTRUCTIONS.
        PROCEDURE DIVISION.
        *> INITIALIZE VARIABLES THAT IS GOING TO BE USED.
-       COMPUTE BACK-TO-TOP = 0.
-       COMPUTE EOF = 0.
-       COMPUTE LOOP = 1.
+       MOVE 0 TO BACK-TO-TOP.
+       MOVE 0 TO EOF.
+       MOVE 1 TO LOOP.
        OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
        WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
        WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
@@ -92,7 +92,7 @@
            
            *> ASSIGN N FROM THE INPUT FILE.
            *> WHERE N WILL BE THE NUMBER TO CHECK WHETHER IT IS PRIME.
-           COMPUTE N = IN-N
+           MOVE IN-N TO N
            DISPLAY N
 
            *> IF THE NUMBER IS LESS THAN 1 WRITE AN ERROR MESSAGE.
@@ -104,10 +104,10 @@
            ELSE
                *> IF NUMBER IS GREATER THAN 3 THEN CHECK IF IT IS PRIME.
                IF N IS NOT < 4
-                   COMPUTE R = 2
+                   MOVE 2 TO R
     
                    *> LOOP KEEP LOOPING TO CHECK IF NUMBER IS PRIME.
-                   COMPUTE LOOP = 1
+                   MOVE 1 TO LOOP
                    PERFORM UNTIL LOOP IS NOT = 1
                        *> DIVIDE THE NUMBER TO GET THE REMAINDER.
                        *> SO THAT WE KNOW IF IT IS A PRIME OR NOT.
@@ -119,9 +119,9 @@
                        IF I IS NOT = N
                            ADD 1 TO R
                        ELSE
-                           COMPUTE OUT-N-2 = IN-N
+                           MOVE IN-N TO OUT-N-2
                            WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
-                           COMPUTE BACK-TO-TOP = 1
+                           MOVE 1 TO BACK-TO-TOP
                        END-IF
     
                        *> IF THE NUMBER SHOWN THAT IT IS NOT A PRIME.
@@ -129,11 +129,11 @@
                        *> ELSE IF THE NUMBER IS BIGGER THAN R.
                        *> THE LOOP, IF NOT EXIT THE LOOP.
                        IF BACK-TO-TOP = 1
-                           COMPUTE LOOP = 0
+                           MOVE 0 TO LOOP
                        ELSE IF R < N
-                           COMPUTE LOOP = 1
+                           MOVE 1 TO LOOP
                        ELSE
-                           COMPUTE LOOP = 0
+                           MOVE 0 TO LOOP
                        END-IF
                    END-PERFORM
                END-IF
@@ -141,9 +141,9 @@
                *> IF THE NUMBER WAS NOT A PRIME NUMBER GOT BACK TO TOP.
                *> ELSE IF THE NUMBER IS PRIME, WRITE AND CONTINUE.
                IF BACK-TO-TOP = 1
-                   COMPUTE BACK-TO-TOP = 0
+                   MOVE 0 TO BACK-TO-TOP
                ELSE
-                   COMPUTE OUT-N-3 = IN-N
+                   MOVE IN-N TO OUT-N-3
                    WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
                END-IF
            END-IF

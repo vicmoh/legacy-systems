@@ -94,9 +94,9 @@
            *> LOOP UNTIL THE USER ENTER EXIT
            PERFORM UNTIL USER-OPTION = "X" OR USER-OPTION = "x"
                *> INITIALIZE VARIABLES THAT IS GOING TO BE USED.
-               COMPUTE BACK-TO-TOP = 0
-               COMPUTE EOF = 0
-               COMPUTE LOOP = 1
+               MOVE 0 TO BACK-TO-TOP
+               MOVE 0 TO EOF
+               MOVE 1 TO LOOP
                *> DISPLAY THE OPTIONS TO THE USER.
                DISPLAY " "
                DISPLAY "-------------------------------------------------"
@@ -145,7 +145,7 @@
                *> THEN ASSIGN EACH LINE TO THE IN-CARD.
                *> IF IT'S END OF FILE, SET EOF AS TRUE.
                IF USER-OPTION = "1"
-                   COMPUTE IN-N = USER-STANDARD-INPUT
+                   MOVE USER-STANDARD-INPUT TO IN-N
                ELSE
                    READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
                END-IF
@@ -159,7 +159,7 @@
                END-IF
                *> ASSIGN N FROM THE INPUT FILE.
                *> WHERE N WILL BE THE NUMBER TO CHECK WHETHER IT IS PRIME.
-               COMPUTE N = IN-N
+               MOVE IN-N TO N
                *> IF THE NUMBER IS LESS THAN 1 WRITE AN ERROR MESSAGE.
                *> ELSE FIND WHETHER IT IS A PRIME NUMBER.
                IF N IS NOT > 1
@@ -173,9 +173,9 @@
                ELSE
                    *> IF NUMBER IS GREATER THAN 3 THEN CHECK IF IT IS PRIME.
                    IF N IS NOT < 4
-                       COMPUTE R = 2
+                       MOVE 2 TO R
                        *> LOOP KEEP LOOPING TO CHECK IF NUMBER IS PRIME.
-                       COMPUTE LOOP = 1
+                       MOVE 1 TO LOOP
                        PERFORM UNTIL LOOP IS NOT = 1
                            *> DIVIDE THE NUMBER TO GET THE REMAINDER.
                            *> SO THAT WE KNOW IF IT IS A PRIME OR NOT.
@@ -190,39 +190,39 @@
                                IF USER-OPTION = "1"
                                    DISPLAY "RESULT: IT IS NOT A PRIME NUMBER."
                                ELSE
-                                   COMPUTE OUT-N-2 = IN-N
+                                   MOVE IN-N TO OUT-N-2
                                    WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
                                END-IF
-                               COMPUTE BACK-TO-TOP = 1
+                               MOVE 1 TO BACK-TO-TOP
                            END-IF
                            *> IF THE NUMBER SHOWN THAT IT IS NOT A PRIME.
                            *> CONTINUUE TO THE TOP.
                            *> ELSE IF THE NUMBER IS BIGGER THAN R.
                            *> THE LOOP, IF NOT EXIT THE LOOP.
                            IF BACK-TO-TOP = 1
-                               COMPUTE LOOP = 0
+                               MOVE 0 TO LOOP
                            ELSE IF R < N
-                               COMPUTE LOOP = 1
+                               MOVE 1 TO LOOP
                            ELSE
-                               COMPUTE LOOP = 0
+                               MOVE 0 TO LOOP
                            END-IF
                        END-PERFORM
                    END-IF
                    *> IF THE NUMBER WAS NOT A PRIME NUMBER GOT BACK TO TOP.
                    *> ELSE IF THE NUMBER IS PRIME, WRITE AND CONTINUE.
                    IF BACK-TO-TOP = 1
-                       COMPUTE BACK-TO-TOP = 0
+                       MOVE 0 TO BACK-TO-TOP
                    ELSE
                        IF USER-OPTION = "1"
                            DISPLAY "RESULT: IT IS A PRIME NUMBER."
                        ELSE
-                           COMPUTE OUT-N-3 = IN-N
+                           MOVE IN-N TO OUT-N-3
                            WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
                        END-IF
                    END-IF
                END-IF
                *> EXIT IF THE PROGRAM IS THE STANDARD INPUT
                IF USER-OPTION = "1"
-                   COMPUTE EOF = 1
+                   MOVE 1 TO EOF
                END-IF
            END-PERFORM.
