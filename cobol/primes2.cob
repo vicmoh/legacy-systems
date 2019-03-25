@@ -1,15 +1,21 @@
-       *> IDENTIFICATION DIVISION
+       *> IDENTIFICATION DIVISION.
+       *> IT PROVIDES THE PROGRAM NAME AND OTHER ITEMS USED TO UNIQUELY.
+       *> IDENTIFY THE PROGRAM. IT IS REQUIRED IN EVERY COBOL PROGRAM.
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. tutorial1.
+       PROGRAM-ID. primes2.
+       AUTHOR. VICKY MOHAMMAD.
+       DATE-WRITTEN. 03/20/19.
     
-       *> ENVIRONMENT DIVISION
+       *> ENVIRONMENT DIVISION.
+       *> DESCRIBES THE COMPUTER AND OTHER DEVICES USED TO COMPILE.
+       *> IT IS OPTIONAL TO PROVIDE THE INFORMATION.
        ENVIRONMENT DIVISION.
-
-       *> CONFIGURATION SECTION
+       *> CONFIGURATION SECTION.
        CONFIGURATION SECTION.
-       SPECIAL-NAMES.
-
-       *> INPUT OUTPUT SECTION
+       SOURCE-COMPUTER. CREATED WITH MAC OS.
+       OBJECT-COMPUTER. CREATION FOR MAC AND LINUX.
+       *> INPUT OUTPUT SECTION.
+       *> IT IS FOR THE READING AND WRITING FILES.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
        SELECT INPUT-FILE ASSIGN TO "./cobol/assets/primes.dat"
@@ -17,15 +23,16 @@
        SELECT OUTPUT-FILE ASSIGN TO "./cobol/assets/primes.out"
            ORGANIZATION IS LINE SEQUENTIAL.
 
-       *> DATA DIVISION
+       *> DATA DIVISION.
+       *> IS A DIVISION FOR WORKING AND DECLARERING DATA.
        DATA DIVISION.
+       *> FILE SECTION IS FOR IO DATA.    
        FILE SECTION.
          FD INPUT-FILE.
              01 INPUT-VAL PIC X(9999).
          FD OUTPUT-FILE.
              01 OUT-LINE PIC x(9999) VALUE SPACES.
-       
-       *> WORKING STORAGE SECTION
+       *> WORKING STORAGE SECTION IS FOR MAIN DATA.
        WORKING-STORAGE SECTION.
            77 N PICTURE S9(9).
            77 R PICTURE S9(9) USAGE IS COMPUTATIONAL.
@@ -35,9 +42,11 @@
            77 LOOP PIC 9.
            77 EOF PIC 9.
            77 BACK-TO-TOP PIC 9.
+       *> DECLARE A RECORD WHEN READING FROM USER DATA.
        01 IN-CARD.
            02 IN-N PICTURE 9(9).
            02 FILLER PICTURE X(71).
+       *> DECLARE A RECORD IF THE TILLE LINE 
        01 TITLE-LINE.
            02 FILLER PICTURE X(6) VALUE SPACES.
            02 FILLER PICTURE X(20) VALUE 'PRIME NUMBER RESULTS'.
@@ -57,45 +66,58 @@
            02 OUT-N PICTURE Z(8)9.
            02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
        
+       *> PROCEDURE DIVISION.
+       *> THIS DIVISION IS USED TO SPECIFY THE OPERATIONS.
+       *> WHERE THE PROGRAM PERFORMED ACTUAL LOGIC AND INSTRUCTIONS.
        PROCEDURE DIVISION.
-           COMPUTE BACK-TO-TOP = 0.
-           COMPUTE EOF = 0.
-           COMPUTE LOOP = 1.
-           OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
-           WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
-           WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
+       *> INITIALIZE VARIABLES THAT IS GOING TO BE USED.
+       COMPUTE BACK-TO-TOP = 0.
+       COMPUTE EOF = 0.
+       COMPUTE LOOP = 1.
+       OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
+       WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
+       WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
 
+        *> LOOP THE PROGRAM UNTIL END OF FILE IS TRUE.
         PERFORM UNTIL EOF = 1
-           *> READ INPUT FILE
+           *> READ INPUT FILE IN EACH LINE.
+           *> THEN ASSIGN EACH LINE TO THE IN-CARD.
+           *> IF IT'S END OF FILE, SET EOF AS TRUE.
            READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
 
-           *> IF IT IS END OF FILE CLOSE THE PROGRAM
+           *> IF IT IS END OF FILE CLOSE THE IO.
+           *> THEN STOP THE PROGRAM.
            IF EOF = 1
                CLOSE INPUT-FILE, OUTPUT-FILE
                STOP RUN
            END-IF
            
-           *> MOVE IN-N TO N
+           *> ASSIGN N FROM THE INPUT FILE.
+           *> WHERE N WILL BE THE NUMBER TO CHECK WHETHER IT IS PRIME.
            COMPUTE N = IN-N
-           DISPLAY "N = ", N
+           DISPLAY N
 
-           *> WRITE ERROR MESSAGE
+           *> IF THE NUMBER IS LESS THAN 1 WRITE AN ERROR MESSAGE.
+           *> ELSE FIND WHETHER IT IS A PRIME NUMBER.
            IF N IS NOT > 1
+               *> WRITE ERROR MESSAGE AND CONTINUE.
                MOVE IN-N TO OUT-N
                WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
            ELSE
-               *> B1. IF N IS LESS THAN 4 GO TO 3
+               *> IF NUMBER IS GREATER THAN 3 THEN CHECK IF IT IS PRIME.
                IF N IS NOT < 4
                    COMPUTE R = 2
     
-                   *> THIS IS 2.
+                   *> LOOP KEEP LOOPING TO CHECK IF NUMBER IS PRIME.
                    COMPUTE LOOP = 1
                    PERFORM UNTIL LOOP IS NOT = 1
-    
+                       *> DIVIDE THE NUMBER TO GET THE REMAINDER.
+                       *> SO THAT WE KNOW IF IT IS A PRIME OR NOT.
                        DIVIDE R INTO N GIVING I
                        MULTIPLY R BY I
     
-                       *> GO TO B2
+                       *> IF I IS NOT THE NUMBER ADD 1 TO THE REMAINDER.
+                       *> ELSE SHOW THE NUMBER THAT IT IS NOT PRIME.
                        IF I IS NOT = N
                            ADD 1 TO R
                        ELSE
@@ -105,7 +127,10 @@
                            COMPUTE BACK-TO-TOP = 1
                        END-IF
     
-                       *> IF R IS LESS THAN N GO TO 2.
+                       *> IF THE NUMBER SHOWN THAT IT IS NOT A PRIME.
+                       *> CONTINUUE TO THE TOP.
+                       *> ELSE IF THE NUMBER IS BIGGER THAN R.
+                       *> THE LOOP, IF NOT EXIT THE LOOP.
                        IF BACK-TO-TOP = 1
                            COMPUTE LOOP = 0
                        ELSE IF R < N
@@ -116,7 +141,8 @@
                    END-PERFORM
                END-IF
     
-               *> GO BACK TO THE TO OF THE PROGRAM
+               *> IF THE NUMBER WAS NOT A PRIME NUMBER GOT BACK TO TOP.
+               *> ELSE IF THE NUMBER IS PRIME, WRITE AND CONTINUE.
                IF BACK-TO-TOP = 1
                    COMPUTE BACK-TO-TOP = 0
                    DISPLAY "CONTINUE"
