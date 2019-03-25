@@ -1,15 +1,15 @@
-    *>    header of the program
+      *HEADER OF THE PROGRAM
        IDENTIFICATION DIVISION.
        PROGRAM-ID. tutorial1.
     
-    *>    environtment division
+      *ENVIRONMENT DIVISION
        ENVIRONMENT DIVISION.
 
-    *>    configuration section
+      *CONFIGURATION SECTION
        CONFIGURATION SECTION.
        SPECIAL-NAMES.
 
-    *>    input output section
+      *INPUT OUTPUT SECTION FOR READING AND WRITING WILE
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
        SELECT INPUT-FILE ASSIGN TO "./cobol/assets/primes.dat"
@@ -17,7 +17,7 @@
        SELECT OUTPUT-FILE ASSIGN TO "./cobol/assets/primes.out"
            ORGANIZATION IS LINE SEQUENTIAL.
 
-    *>    data division
+      *DATA DIVISION
        DATA DIVISION.
        FILE SECTION.
        FD INPUT-FILE.
@@ -25,6 +25,7 @@
        FD OUTPUT-FILE.
            01 OUT-LINE PIC x(9999) VALUE SPACES.
            
+      *WORKING STORAGE FOR DATA MANIPULATION
        WORKING-STORAGE SECTION.
            77 N PICTURE S9(9).
            77 R PICTURE S9(9) USAGE IS COMPUTATIONAL.
@@ -51,6 +52,7 @@
            02 OUT-N PICTURE Z(8)9.
            02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
 
+      *PROCEDURE DIVISION FOR PROGRAM INSTRUCTION
        PROCEDURE DIVISION.
            OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
            WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
