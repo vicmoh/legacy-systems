@@ -112,6 +112,7 @@
                *> LET USER KNOW PROGRAM IS EXITING.
                IF USER-OPTION = "X" OR USER-OPTION = "x"
                    DISPLAY "TERMINATING PROGRAM..."
+                   DISPLAY "GOOD BYE."
                    DISPLAY " "
                END-IF
            END-PERFORM.
