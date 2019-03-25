@@ -121,7 +121,6 @@
                    COMPUTE BACK-TO-TOP = 0
                    DISPLAY "CONTINUE"
                ELSE
-                   *> THIS IS 3.
                    DISPLAY "PRIME-LINE = ", PRIME-LINE
                    COMPUTE OUT-N-3 = IN-N
                    WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
