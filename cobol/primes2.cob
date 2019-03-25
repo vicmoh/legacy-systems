@@ -1,15 +1,15 @@
-    *>    IDENTIFICATION DIVISION
+       *> IDENTIFICATION DIVISION
        IDENTIFICATION DIVISION.
        PROGRAM-ID. tutorial1.
     
-    *>    ENVIRONMENT DIVISION
+       *> ENVIRONMENT DIVISION
        ENVIRONMENT DIVISION.
 
-    *>    CONFIGURATION SECTION
+       *> CONFIGURATION SECTION
        CONFIGURATION SECTION.
        SPECIAL-NAMES.
 
-    *>    INPUT OUTPUT SECTION
+       *> INPUT OUTPUT SECTION
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
        SELECT INPUT-FILE ASSIGN TO "./cobol/assets/primes.dat"
@@ -17,7 +17,7 @@
        SELECT OUTPUT-FILE ASSIGN TO "./cobol/assets/primes.out"
            ORGANIZATION IS LINE SEQUENTIAL.
 
-    *>    DATA DIVISION
+       *> DATA DIVISION
        DATA DIVISION.
        FILE SECTION.
          FD INPUT-FILE.
@@ -25,7 +25,7 @@
          FD OUTPUT-FILE.
              01 OUT-LINE PIC x(9999) VALUE SPACES.
        
-    *>    WORKING STORAGE SECTION
+       *> WORKING STORAGE SECTION
        WORKING-STORAGE SECTION.
            77 N PICTURE S9(9).
            77 R PICTURE S9(9) USAGE IS COMPUTATIONAL.
@@ -66,36 +66,36 @@
            WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
 
         PERFORM UNTIL EOF = 1
-        *>    READ INPUT FILE
+           *> READ INPUT FILE
            READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
 
-        *>    IF IT IS END OF FILE CLOSE THE PROGRAM
+           *> IF IT IS END OF FILE CLOSE THE PROGRAM
            IF EOF = 1
                CLOSE INPUT-FILE, OUTPUT-FILE
                STOP RUN
            END-IF
            
-        *>    MOVE IN-N TO N
+           *> MOVE IN-N TO N
            COMPUTE N = IN-N
            DISPLAY "N = ", N
 
-        *>    WRITE ERROR MESSAGE
+           *> WRITE ERROR MESSAGE
            IF N IS NOT > 1
                MOVE IN-N TO OUT-N
                WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
            ELSE
-            *>    B1. IF N IS LESS THAN 4 GO TO 3
+               *> B1. IF N IS LESS THAN 4 GO TO 3
                IF N IS NOT < 4
                    COMPUTE R = 2
     
-                *>    THIS IS 2.
+                   *> THIS IS 2.
                    COMPUTE LOOP = 1
                    PERFORM UNTIL LOOP IS NOT = 1
     
                        DIVIDE R INTO N GIVING I
                        MULTIPLY R BY I
     
-                    *>    GO TO B2
+                       *> GO TO B2
                        IF I IS NOT = N
                            ADD 1 TO R
                        ELSE
@@ -105,7 +105,7 @@
                            COMPUTE BACK-TO-TOP = 1
                        END-IF
     
-                    *>    IF R IS LESS THAN N GO TO 2.
+                       *> IF R IS LESS THAN N GO TO 2.
                        IF BACK-TO-TOP = 1
                            COMPUTE LOOP = 0
                        ELSE IF R < N
@@ -116,7 +116,7 @@
                    END-PERFORM
                END-IF
     
-            *>    GO BACK TO THE TO OF THE PROGRAM
+               *> GO BACK TO THE TO OF THE PROGRAM
                IF BACK-TO-TOP = 1
                    COMPUTE BACK-TO-TOP = 0
                    DISPLAY "CONTINUE"
