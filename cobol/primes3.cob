@@ -70,10 +70,6 @@
        *> THIS DIVISION IS USED TO SPECIFY THE OPERATIONS.
        *> WHERE THE PROGRAM PERFORMED ACTUAL LOGIC AND INSTRUCTIONS.
        PROCEDURE DIVISION.
-       *> INITIALIZE VARIABLES THAT IS GOING TO BE USED.
-       COMPUTE BACK-TO-TOP = 0.
-       COMPUTE EOF = 0.
-       COMPUTE LOOP = 1.
        OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
        WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
        WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
@@ -97,6 +93,10 @@
        MAIN-USER-INPUT-FUNCTION.
            *> LOOP UNTIL THE USER ENTER EXIT
            PERFORM UNTIL USER-OPTION = "X" OR USER-OPTION = "x"
+               *> INITIALIZE VARIABLES THAT IS GOING TO BE USED.
+               COMPUTE BACK-TO-TOP = 0
+               COMPUTE EOF = 0
+               COMPUTE LOOP = 1
                *> DISPLAY THE OPTIONS TO THE USER.
                DISPLAY " "
                DISPLAY "-------------------------------------------------"
@@ -107,20 +107,21 @@
                DISPLAY "-------------------------------------------------"
                DISPLAY "ENTER AN OPTION:"
                ACCEPT USER-OPTION
-               DISPLAY " "
+               *> OPTION CONDITION FOR STANDARD INPUT
+               PERFORM STANDARD-INPUT-OPTION-FUNCTION
                *> LET USER KNOW PROGRAM IS EXITING.
                IF USER-OPTION = "X" OR USER-OPTION = "x"
                    DISPLAY "TERMINATING PROGRAM..."
+                   DISPLAY " "
                END-IF
            END-PERFORM.
 
        *> FUNCTION FOR THE OPTION OF THE STANDARD INPUT OPTION.
        STANDARD-INPUT-OPTION-FUNCTION.
            IF USER-OPTION = "1"
-               DISPLAY " "
                DISPLAY "ENTER A PRIME NUMBER: "
                ACCEPT USER-STANDARD-INPUT
-               DISPLAY " "
+               PERFORM PRIME-FUNCTION
            END-IF.
        
        *> PRIME FUNCTION THAT WILL FIND WHETHER A NUMBER IS PRIME.
@@ -132,35 +133,33 @@
                *> THEN ASSIGN EACH LINE TO THE IN-CARD.
                *> IF IT'S END OF FILE, SET EOF AS TRUE.
                IF USER-OPTION = "1"
-                   COMPUTE EOF = 1
                    COMPUTE IN-N = USER-STANDARD-INPUT
                ELSE
                    READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
                END-IF
-               
                *> IF IT IS END OF FILE CLOSE THE IO.
                *> THEN STOP THE PROGRAM.
                IF EOF = 1
                    CLOSE INPUT-FILE, OUTPUT-FILE
                    STOP RUN
                END-IF
-               
                *> ASSIGN N FROM THE INPUT FILE.
                *> WHERE N WILL BE THE NUMBER TO CHECK WHETHER IT IS PRIME.
                COMPUTE N = IN-N
-               DISPLAY N
-    
                *> IF THE NUMBER IS LESS THAN 1 WRITE AN ERROR MESSAGE.
                *> ELSE FIND WHETHER IT IS A PRIME NUMBER.
                IF N IS NOT > 1
                    *> WRITE ERROR MESSAGE AND CONTINUE.
                    MOVE IN-N TO OUT-N
-                   WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
+                   IF USER-OPTION = "1"
+                       DISPLAY "RESULT: ILLEGAL INPUT."
+                   ELSE
+                       WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
+                   END-IF
                ELSE
                    *> IF NUMBER IS GREATER THAN 3 THEN CHECK IF IT IS PRIME.
                    IF N IS NOT < 4
                        COMPUTE R = 2
-        
                        *> LOOP KEEP LOOPING TO CHECK IF NUMBER IS PRIME.
                        COMPUTE LOOP = 1
                        PERFORM UNTIL LOOP IS NOT = 1
@@ -174,11 +173,14 @@
                            IF I IS NOT = N
                                ADD 1 TO R
                            ELSE
-                               COMPUTE OUT-N-2 = IN-N
-                               WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
+                               IF USER-OPTION = "1"
+                                   DISPLAY "RESULT: IT IS NOT A PRIME NUMBER."
+                               ELSE
+                                   COMPUTE OUT-N-2 = IN-N
+                                   WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
+                               END-IF
                                COMPUTE BACK-TO-TOP = 1
                            END-IF
-        
                            *> IF THE NUMBER SHOWN THAT IT IS NOT A PRIME.
                            *> CONTINUUE TO THE TOP.
                            *> ELSE IF THE NUMBER IS BIGGER THAN R.
@@ -192,14 +194,21 @@
                            END-IF
                        END-PERFORM
                    END-IF
-        
                    *> IF THE NUMBER WAS NOT A PRIME NUMBER GOT BACK TO TOP.
                    *> ELSE IF THE NUMBER IS PRIME, WRITE AND CONTINUE.
                    IF BACK-TO-TOP = 1
                        COMPUTE BACK-TO-TOP = 0
                    ELSE
-                       COMPUTE OUT-N-3 = IN-N
-                       WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
+                       IF USER-OPTION = "1"
+                           DISPLAY "RESULT: IT IS A PRIME NUMBER."
+                       ELSE
+                           COMPUTE OUT-N-3 = IN-N
+                           WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
+                       END-IF
                    END-IF
+               END-IF
+               *> EXIT IF THE PROGRAM IS THE STANDARD INPUT
+               IF USER-OPTION = "1"
+                   COMPUTE EOF = 1
                END-IF
            END-PERFORM.
