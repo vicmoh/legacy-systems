@@ -1,10 +1,10 @@
-      PRIME NUMBER RESULTS
+      PRIME NUMBER RESULTS
  -------------------------------
          1 ILLEGAL INPUT
-         3 IS A PRIME
-      8677 IS A PRIME
-        33 IS NOT A PRIME
-         5 IS A PRIME
-         7 IS A PRIME
-       123 IS NOT A PRIME
+         3 ILLEGAL INPUT
+      8677 ILLEGAL INPUT
+        33 ILLEGAL INPUT
+         5 ILLEGAL INPUT
+         7 ILLEGAL INPUT
+       123 ILLEGAL INPUT
          0 ILLEGAL INPUT
