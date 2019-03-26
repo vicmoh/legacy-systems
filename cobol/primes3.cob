@@ -33,7 +33,7 @@
        *> working storage section is for main data.
        working-storage section.
            77 inputFileName pic x(99).
-           77 ouputFileName pic x(99).
+           77 outputFileName pic x(99).
            77 num pic s9(9).
            77 divisor pic s9(9) usage is computational.
            77 product pic s9(9) usage is computational.
