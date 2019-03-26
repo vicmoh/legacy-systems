@@ -57,7 +57,7 @@
            02 filler pic x value space.
            02 outNum3 pic z(8)9.
            02 filler pic x(11) value ' IS A PRIME'.
-       01 error-mess.
+       01 errorMess.
            02 filler pic x value space.
            02 outNum pic z(8)9.
            02 filler pic x(14) value ' illegal input'.
@@ -98,7 +98,7 @@
            if num is not > 1
                *> write error message and continue.
                move inNum to outNum
-               write outLine from error-mess after advancing 1 line
+               write outLine from errorMess after advancing 1 line
            else
                *> if number is greater than 3 then check if it is prime.
                if num is not < 4
