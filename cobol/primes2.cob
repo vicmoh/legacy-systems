@@ -1,150 +1,148 @@
-       *> IDENTIFICATION DIVISION.
-       *> IT PROVIDES THE PROGRAM NAME AND OTHER ITEMS USED TO UNIQUELY.
-       *> IDENTIFY THE PROGRAM. IT IS REQUIRED IN EVERY COBOL PROGRAM.
-       IDENTIFICATION DIVISION.
-       PROGRAM-ID. primes2.
+       *> identification division.
+       *> it provides the program name and other items used to uniquely.
+       *> identify the program. it is required in every cobol program.
+       identification division.
+       program-id. primes2.
     
-       *> ENVIRONMENT DIVISION.
-       *> DESCRIBES THE COMPUTER AND OTHER DEVICES USED TO COMPILE.
-       *> IT IS OPTIONAL TO PROVIDE THE INFORMATION.
-       ENVIRONMENT DIVISION.
-       *> CONFIGURATION SECTION.
-       *> IS THE SECTION TO TELL WHICH COMPUTER IS BEING CREATED.
-       *> AS WELL AS DESCRIBE THE COMPUTER ENVIRONMENT OF THE PROGRAM.
-       CONFIGURATION SECTION.
-       *> INPUT OUTPUT SECTION.
-       *> IT IS FOR THE READING AND WRITING FILES.
-       INPUT-OUTPUT SECTION.
-       FILE-CONTROL.
-       SELECT INPUT-FILE ASSIGN TO "./primes.dat"
-           ORGANIZATION IS LINE SEQUENTIAL.
-       SELECT OUTPUT-FILE ASSIGN TO "./primes.out"
-           ORGANIZATION IS LINE SEQUENTIAL.
+       *> environment division.
+       *> describes the computer and other devices used to compile.
+       *> it is optional to provide the information.
+       environment division.
+       *> configuration section.
+       *> is the section to tell which computer is being created.
+       *> as well as describe the computer environment of the program.
+       configuration section.
+       *> input output section.
+       *> it is for the reading and writing files.
+       input-output section.
+       file-control.
+       select inputFile assign to "./primes.dat"
+           organization is line sequential.
+       select outputFile assign to "./primes.out"
+           organization is line sequential.
 
-       *> DATA DIVISION.
-       *> IS A DIVISION FOR WORKING AND DECLARERING DATA.
-       DATA DIVISION.
-       *> FILE SECTION IS FOR IO DATA.    
-       FILE SECTION.
-         FD INPUT-FILE.
-             01 INPUT-VAL PIC X(9999).
-         FD OUTPUT-FILE.
-             01 OUT-LINE PIC x(9999) VALUE SPACES.
-       *> WORKING STORAGE SECTION IS FOR MAIN DATA.
-       WORKING-STORAGE SECTION.
-           77 N PICTURE S9(9).
-           77 R PICTURE S9(9) USAGE IS COMPUTATIONAL.
-           77 I PICTURE S9(9) USAGE IS COMPUTATIONAL.
-           77 TO-BE-PRINT PIC X(9).
-           77 WS-EOF PIC X.
-           77 LOOP PIC 9.
-           77 EOF PIC 9.
-           77 BACK-TO-TOP PIC 9.
-       *> DECLARE A RECORD WHEN READING FROM USER DATA.
-       01 IN-CARD.
-           02 IN-N PICTURE 9(9).
-           02 FILLER PICTURE X(71).
-       *> DECLARE A RECORD IF THE TILLE LINE 
-       01 TITLE-LINE.
-           02 FILLER PICTURE X(6) VALUE SPACES.
-           02 FILLER PICTURE X(20) VALUE 'PRIME NUMBER RESULTS'.
-       01 UNDER-LINE.
-           02 FILLER PICTURE X(32) VALUE
+       *> data division.
+       *> is a division for working and declarering data.
+       data division.
+       *> file section is for io data.    
+       file section.
+         fd inputFile.
+             01 inputLine pic x(9999).
+         fd outputFile.
+             01 outLine pic x(9999) value spaces.
+       *> working storage section is for main data.
+       working-storage section.
+           77 num picture s9(9).
+           77 divisor picture s9(9) usage is computational.
+           77 product picture s9(9) usage is computational.
+           77 loop pic 9.
+           77 eof pic 9.
+           77 backToTop pic 9.
+       *> declare a record when reading from user data.
+       01 inCard.
+           02 inNum picture 9(9).
+           02 filler picture x(71).
+       *> declare a record if the tille line 
+       01 titleLine.
+           02 filler picture x(6) value spaces.
+           02 filler picture x(20) value 'prime number results'.
+       01 theUnderLine.
+           02 filler picture x(32) value
         ' -------------------------------'.
-       01 NOT-A-PRIME-LINE.
-           02 FILLER PICTURE X VALUE SPACE.
-           02 OUT-N-2 PICTURE Z(8)9.
-           02 FILLER PICTURE X(15) VALUE ' IS NOT A PRIME'.
-       01 PRIME-LINE.
-           02 FILLER PICTURE X VALUE SPACE.
-           02 OUT-N-3 PICTURE Z(8)9.
-           02 FILLER PICTURE X(11) VALUE ' IS A PRIME'.
-       01 ERROR-MESS.
-           02 FILLER PICTURE X VALUE SPACE.
-           02 OUT-N PICTURE Z(8)9.
-           02 FILLER PICTURE X(14) VALUE ' ILLEGAL INPUT'.
+       01 notAPrimeLine.
+           02 filler picture x value space.
+           02 outNum2 picture z(8)9.
+           02 filler picture x(15) value ' is not a prime'.
+       01 primeLine.
+           02 filler picture x value space.
+           02 outNum3 picture z(8)9.
+           02 filler picture x(11) value ' is a prime'.
+       01 error-mess.
+           02 filler picture x value space.
+           02 outNum picture z(8)9.
+           02 filler picture x(14) value ' illegal input'.
        
-       *> PROCEDURE DIVISION.
-       *> THIS DIVISION IS USED TO SPECIFY THE OPERATIONS.
-       *> WHERE THE PROGRAM PERFORMED ACTUAL LOGIC AND INSTRUCTIONS.
-       PROCEDURE DIVISION.
-       *> INITIALIZE VARIABLES THAT IS GOING TO BE USED.
-       MOVE 0 TO BACK-TO-TOP.
-       MOVE 0 TO EOF.
-       MOVE 1 TO LOOP.
-       OPEN INPUT INPUT-FILE, OUTPUT OUTPUT-FILE.
-       WRITE OUT-LINE FROM TITLE-LINE AFTER ADVANCING 0 LINES.
-       WRITE OUT-LINE FROM UNDER-LINE AFTER ADVANCING 1 LINE.
+       *> procedure division.
+       *> this division is used to specify the operations.
+       *> where the program performed actual logic and instructions.
+       procedure division.
+       *> initialize variables that is going to be used.
+       move 0 to backToTop.
+       move 0 to eof.
+       move 1 to loop.
+       open input inputFile, output outputFile.
+       write outLine from titleLine after advancing 0 lines.
+       write outLine from theUnderLine after advancing 1 line.
 
-       *> LOOP THE PROGRAM UNTIL END OF FILE IS TRUE.
-       PERFORM UNTIL EOF = 1
-           *> READ INPUT FILE IN EACH LINE.
-           *> THEN ASSIGN EACH LINE TO THE IN-CARD.
-           *> IF IT'S END OF FILE, SET EOF AS TRUE.
-           READ INPUT-FILE INTO IN-CARD AT END MOVE 1 TO EOF END-READ
+       *> loop the program until end of file is true.
+       perform until eof = 1
+           *> read input file in each line.
+           *> then assign each line to the inCard.
+           *> if it's end of file, set eof as true.
+           read inputFile into inCard at end move 1 to eof end-read
 
-           *> IF IT IS END OF FILE CLOSE THE IO.
-           *> THEN STOP THE PROGRAM.
-           IF EOF = 1
-               CLOSE INPUT-FILE, OUTPUT-FILE
-               STOP RUN
-           END-IF
+           *> if it is end of file close the io.
+           *> then stop the program.
+           if eof = 1
+               close inputFile, outputFile
+               stop run
+           end-if
            
-           *> ASSIGN N FROM THE INPUT FILE.
-           *> WHERE N WILL BE THE NUMBER TO CHECK WHETHER IT IS PRIME.
-           MOVE IN-N TO N
-           DISPLAY N
+           *> assign num from the input file.
+           *> where num will be the number to check whether it is prime.
+           move inNum to num
+           display num
 
-           *> IF THE NUMBER IS LESS THAN 1 WRITE AN ERROR MESSAGE.
-           *> ELSE FIND WHETHER IT IS A PRIME NUMBER.
-           IF N IS NOT > 1
-               *> WRITE ERROR MESSAGE AND CONTINUE.
-               MOVE IN-N TO OUT-N
-               WRITE OUT-LINE FROM ERROR-MESS AFTER ADVANCING 1 LINE
-           ELSE
-               *> IF NUMBER IS GREATER THAN 3 THEN CHECK IF IT IS PRIME.
-               IF N IS NOT < 4
-                   MOVE 2 TO R
+           *> if the number is less than 1 write an error message.
+           *> else find whether it is a prime number.
+           if num is not > 1
+               *> write error message and continue.
+               move inNum to outNum
+               write outLine from error-mess after advancing 1 line
+           else
+               *> if number is greater than 3 then check if it is prime.
+               if num is not < 4
+                   move 2 to divisor
     
-                   *> LOOP KEEP LOOPING TO CHECK IF NUMBER IS PRIME.
-                   MOVE 1 TO LOOP
-                   PERFORM UNTIL LOOP IS NOT = 1
-                       *> DIVIDE THE NUMBER TO GET THE REMAINDER.
-                       *> SO THAT WE KNOW IF IT IS A PRIME OR NOT.
-                       DIVIDE R INTO N GIVING I
-                       MULTIPLY R BY I
+                   *> loop keep looping to check if number is prime.
+                   move 1 to loop
+                   perform until loop is not = 1
+                       *> divide the number to get the remainder.
+                       *> so that we know if it is a prime or not.
+                       divide divisor into num giving product
+                       multiply divisor by product
     
-                       *> IF I IS NOT THE NUMBER ADD 1 TO THE REMAINDER.
-                       *> ELSE SHOW THE NUMBER THAT IT IS NOT PRIME.
-                       IF I IS NOT = N
-                           ADD 1 TO R
-                       ELSE
-                           MOVE IN-N TO OUT-N-2
-                           WRITE OUT-LINE FROM NOT-A-PRIME-LINE AFTER ADVANCING 1 LINE
-                           MOVE 1 TO BACK-TO-TOP
-                       END-IF
+                       *> if product is not the number add 1 to the remainder.
+                       *> else show the number that it is not prime.
+                       if product is not = num
+                           add 1 to divisor
+                       else
+                           move inNum to outNum2
+                           write outLine from notAPrimeLine after advancing 1 line
+                           move 1 to backToTop
+                       end-if
     
-                       *> IF THE NUMBER SHOWN THAT IT IS NOT A PRIME.
-                       *> CONTINUUE TO THE TOP.
-                       *> ELSE IF THE NUMBER IS BIGGER THAN R.
-                       *> THE LOOP, IF NOT EXIT THE LOOP.
-                       IF BACK-TO-TOP = 1
-                           MOVE 0 TO LOOP
-                       ELSE IF R < N
-                           MOVE 1 TO LOOP
-                       ELSE
-                           MOVE 0 TO LOOP
-                       END-IF
-                   END-PERFORM
-               END-IF
+                       *> if the number shown that it is not a prime.
+                       *> continuue to the top.
+                       *> else if the number is bigger than divisor.
+                       *> the loop, if not exit the loop.
+                       if backToTop = 1
+                           move 0 to loop
+                       else if divisor < num
+                           move 1 to loop
+                       else
+                           move 0 to loop
+                       end-if
+                   end-perform
+               end-if
     
-               *> IF THE NUMBER WAS NOT A PRIME NUMBER GOT BACK TO TOP.
-               *> ELSE IF THE NUMBER IS PRIME, WRITE AND CONTINUE.
-               IF BACK-TO-TOP = 1
-                   MOVE 0 TO BACK-TO-TOP
-               ELSE
-                   MOVE IN-N TO OUT-N-3
-                   WRITE OUT-LINE FROM PRIME-LINE AFTER ADVANCING 1 LINE
-               END-IF
-           END-IF
-       END-PERFORM.
+               *> if the number was not a prime number got back to top.
+               *> else if the number is prime, write and continue.
+               if backToTop = 1
+                   move 0 to backToTop
+               else
+                   move inNum to outNum3
+                   write outLine from primeLine after advancing 1 line
+               end-if
+           end-if
+       end-perform.
