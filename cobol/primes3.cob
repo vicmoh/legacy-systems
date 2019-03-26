@@ -71,7 +71,6 @@
        *> where the program performed actual logic and instructions.
        procedure division.
 
-
        *>---------------------------------------------------------------
        *> main program execution.
        *>---------------------------------------------------------------
