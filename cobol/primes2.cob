@@ -16,9 +16,9 @@
        *> IT IS FOR THE READING AND WRITING FILES.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
-       SELECT INPUT-FILE ASSIGN TO "./cobol/assets/primes.dat"
+       SELECT INPUT-FILE ASSIGN TO "./primes.dat"
            ORGANIZATION IS LINE SEQUENTIAL.
-       SELECT OUTPUT-FILE ASSIGN TO "./cobol/assets/primes.out"
+       SELECT OUTPUT-FILE ASSIGN TO "./primes.out"
            ORGANIZATION IS LINE SEQUENTIAL.
 
        *> DATA DIVISION.
