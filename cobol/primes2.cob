@@ -45,18 +45,18 @@
        *> declare a record if the tille line 
        01 titleLine.
            02 filler pic x(6) value spaces.
-           02 filler pic x(20) value 'prime number results'.
+           02 filler pic x(20) value 'PRIME NUMBER RESULTS'.
        01 theUnderLine.
            02 filler pic x(32) value
         ' -------------------------------'.
        01 notAPrimeLine.
            02 filler pic x value space.
            02 outNum2 pic z(8)9.
-           02 filler pic x(15) value ' is not a prime'.
+           02 filler pic x(15) value ' IS NOT A PRIME'.
        01 primeLine.
            02 filler pic x value space.
            02 outNum3 pic z(8)9.
-           02 filler pic x(11) value ' is a prime'.
+           02 filler pic x(11) value ' IS A PRIME'.
        01 error-mess.
            02 filler pic x value space.
            02 outNum pic z(8)9.
