@@ -2,7 +2,7 @@
        *> it provides the program name and other items used to uniquely.
        *> identify the program. it is required in every cobol program.
        identification division.
-       program-id. primes2.
+       program-id. primes3.
     
        *> environment division.
        *> describes the computer and other devices used to compile.
