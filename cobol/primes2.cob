@@ -32,35 +32,35 @@
              01 outLine pic x(9999) value spaces.
        *> working storage section is for main data.
        working-storage section.
-           77 num picture s9(9).
-           77 divisor picture s9(9) usage is computational.
-           77 product picture s9(9) usage is computational.
+           77 num pic s9(9).
+           77 divisor pic s9(9) usage is computational.
+           77 product pic s9(9) usage is computational.
            77 loop pic 9.
            77 eof pic 9.
            77 backToTop pic 9.
        *> declare a record when reading from user data.
        01 inCard.
-           02 inNum picture 9(9).
-           02 filler picture x(71).
+           02 inNum pic 9(9).
+           02 filler pic x(71).
        *> declare a record if the tille line 
        01 titleLine.
-           02 filler picture x(6) value spaces.
-           02 filler picture x(20) value 'prime number results'.
+           02 filler pic x(6) value spaces.
+           02 filler pic x(20) value 'prime number results'.
        01 theUnderLine.
-           02 filler picture x(32) value
+           02 filler pic x(32) value
         ' -------------------------------'.
        01 notAPrimeLine.
-           02 filler picture x value space.
-           02 outNum2 picture z(8)9.
-           02 filler picture x(15) value ' is not a prime'.
+           02 filler pic x value space.
+           02 outNum2 pic z(8)9.
+           02 filler pic x(15) value ' is not a prime'.
        01 primeLine.
-           02 filler picture x value space.
-           02 outNum3 picture z(8)9.
-           02 filler picture x(11) value ' is a prime'.
+           02 filler pic x value space.
+           02 outNum3 pic z(8)9.
+           02 filler pic x(11) value ' is a prime'.
        01 error-mess.
-           02 filler picture x value space.
-           02 outNum picture z(8)9.
-           02 filler picture x(14) value ' illegal input'.
+           02 filler pic x value space.
+           02 outNum pic z(8)9.
+           02 filler pic x(14) value ' illegal input'.
        
        *> procedure division.
        *> this division is used to specify the operations.
@@ -109,13 +109,13 @@
                    perform until loop is not = 1
                        *> divide the number to get the remainder.
                        *> so that we know if it is a prime or not.
-                       divide divisor into num giving product
-                       multiply divisor by product
+                       compute product = num / divisor
+                       compute product = product * divisor
     
                        *> if product is not the number add 1 to the remainder.
                        *> else show the number that it is not prime.
                        if product is not = num
-                           add 1 to divisor
+                           compute divisor = divisor + 1
                        else
                            move inNum to outNum2
                            write outLine from notAPrimeLine after advancing 1 line
