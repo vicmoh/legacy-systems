@@ -16,9 +16,9 @@
        *> it is for the reading and writing files.
        input-output section.
        file-control.
-       select inputFile assign to inputFileName
+       select inputFile assign to dynamic inputFileName
            organization is line sequential.
-       select outputFile assign to outputFileName
+       select outputFile assign to dynamic outputFileName
            organization is line sequential.
 
        *> data division.
@@ -103,7 +103,7 @@
                display "2 -> Enter user defined input and output files."
                display "x -> Exit."
                display "-------------------------------------------------"
-               display "enter an option:"
+               display "Enter an option:"
                accept userOption
                *> option condition for standard input
                perform standardInputOptionFunction
