@@ -1,5 +1,14 @@
-# default
-default: cob
+#default
+
+# A4
+# c
+spigot: spigot_compile spigot_run
+	
+spigot_compile:
+	gcc -Wall -std=c11 ./spigot/spigot.c -o ./spigot/run	
+
+spigot_run:
+	./spigot/run
 
 # ada
 ada: ada_gnat ada_run 
