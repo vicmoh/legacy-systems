@@ -1,34 +1,50 @@
+/**
+ * Name: Vicky Mohammad
+ * Email: mohammav@uoguelph.ca
+ */
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-int main() {
-    int r[2800 + 1];
-    int i, k;
-    int b, d;
-    int c = 0;
+/**
+ * Spigot function to find PI.
+ * @return malloc string of the resultt. Should be freed.
+ */
+void spigot(int numOfDec){
+	// Declare setup																																																							
+	int array[numOfDec + 1];
+	int i, k, b, d, c = 0;
+	
+	// Initalize the array
+	for(int x=0; x<numOfDec; x++){
+		array[x] = 2000;
+	}// End for
+	
+	// Loop through the and get find the PI
+	for(int x=numOfDec; x>0; x -= 14){
+		d = 0;
+		x = k;
+		while(true){
+			d += array[x] * 10000;
+            b = 2 * x - 1;
 
-    for (i = 0; i < 2800; i++) {
-        r[i] = 2000;
-    }
-
-    for (k = 2800; k > 0; k -= 14) {
-        d = 0;
-
-        i = k;
-        for (;;) {
-            d += r[i] * 10000;
-            b = 2 * i - 1;
-
-            r[i] = d % b;
+            array[x] = d % b;
             d /= b;
-            i--;
-            if (i == 0) break;
-            d *= i;
-        }
-        printf("%.4d", c + d / 10000);
+            x--;
+            if (x == 0) break;
+            d *= x;
+		}// End while
+
+		// Print the spigot PI
+		printf("%.4d", c + d / 10000);
         c = d % 10000;
-    }
+	}// End for
+}// End spigot function
 
-    return 0;
-}
-
+/**
+ * Main function to run the code.
+ */
+int main(int argc, char** argv){
+	spigot(2800);
+	return 0;
+}// End main function 
