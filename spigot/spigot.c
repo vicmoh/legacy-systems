@@ -1,6 +1,7 @@
 /**
  * Name: Vicky Mohammad
  * Email: mohammav@uoguelph.ca
+ * Description: Spigot in C
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +15,7 @@
 char* spigot() {
 	// Declare variables for spigot function
 	char* result = calloc(1024, sizeof(char));
-	int length, nines=0, predigit=0,numOfDec=1000;
+	int length, nines=0, predigit=0, numOfDec=1000;
 	int q = 0, x;
 
 	// Define the length of the array
@@ -22,13 +23,13 @@ char* spigot() {
 	int array[length];
 
 	// Initialize the array for the decimals
-	for (int i=0; i<length; i=i+1){
+	for (int i=0; i<length; i++){
 		array[i] = 2;
 	}//End of for
 
 	// Loop and each decimals to the string
 	// to be ablee to print as PI.
-	for (int j=1; j<=1000; j=j+1) {
+	for (int j=1; j<=1000; j++) {
 		// Set and initialize q as 0
 		q = 0;
 
@@ -52,7 +53,7 @@ char* spigot() {
 		}else if (q == 10) {
 			sprintf(result, "%s%d", result, predigit+1);
 			result = realloc(result, sizeof(char) * (strlen(result)+8));
-			for (int k=0; k<nines; k=k+1){
+			for (int k=0; k<nines; k++){
 				sprintf(result, "%s%d", result, 0);
 				result = realloc(result, sizeof(char) * (strlen(result)+8));
 			}// End for loop
@@ -63,7 +64,7 @@ char* spigot() {
 			result = realloc(result, sizeof(char) * (strlen(result)+8));
 			predigit = q;
 			if (nines != 0) {
-				for (int k=0; k<nines; k=k+1){
+				for (int k=0; k<nines; k++){
 					sprintf(result, "%s%d", result, 9);
 					result = realloc(result, sizeof(char) * (strlen(result)+8));
 				}// End for loop
