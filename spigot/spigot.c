@@ -49,8 +49,9 @@ char* spigot(int numOfDec){
  * @filename for the output
  * @string to be outputed
  */
-void write(char* filename, char* string){
-	FILE* file = fopen(filename,  "w+");
+void write(char* fileName, char* string){
+	printf("fileName = %s\n", fileName);
+	FILE* file = fopen(fileName,  "w+");
 	fprintf(file, "%s", string);
 	fclose(file);
 }// End file
@@ -60,13 +61,17 @@ void write(char* filename, char* string){
  */
 int main(int argc, char** argv){
 	// Get the output file name
-	char fileName[256] = {""};
+	char* fileName = calloc(256, sizeof(char));
 	printf("Enter the filename to output: \n");
 	fgets(fileName, 256, stdin);
+
 	// Write the output string to a file
-	char* outputString = spigot(1000);
+	char* outputString = spigot(1001);
 	printf("Writing...\n%s\n", outputString);
 	write(fileName, outputString);
+
+	// Free and return
+	free(fileName);
 	free(outputString);
 	return 0;
 }// End main function 
