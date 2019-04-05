@@ -2,37 +2,41 @@
 
 # A4
 # c
-spigot: c
+spigot: fortran
+
+fortran:
+	gfortran -Wall ./spigot/spigot.f95
+	./a.out
 	
 c:
-	gcc -Wall -std=c11 ./spigot/spigot.c -o ./spigot/run	
-	./spigot/run
+	gcc -Wall -std=c11 ./spigot/spigot.c -o ./run	
+	./run
 
-py:
+python:
 	python ./spigot/spigot.py
 
 # ada
-ada: ada_gnat ada_run 
+#ada: ada_gnat ada_run 
 
-ada_gnat:
-	gnatmake -Wall ./ada/ackermann/ackermann.adb
+# ada_gnat:
+# 	gnatmake -Wall ./ada/ackermann/ackermann.adb
 
-ada_run:
-	./ackermann
+# ada_run:
+# 	./ackermann
 
 # fortran
-fortran: fortran_compile_log fortran_run
+# fortran: fortran_compile_log fortran_run
 
-fortran_compile_log:
-	gfortran -Wall ./fortran/logs.f95
+# fortran_compile_log:
+# 	gfortran -Wall ./fortran/logs.f95
 
-fortran_run:
-	./a.out
+# fortran_run:
+# 	./a.out
 
-# cobol
-cob:
-	cobc -x -free -Wall ./cobol/$(run).cob -o ./cobol/run
-	./cobol/run
+# # cobol
+# cob:
+# 	cobc -x -free -Wall ./cobol/$(run).cob -o ./cobol/run
+# 	./cobol/run
 
 # github
 git: git_add git_commit git_push
