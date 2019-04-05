@@ -33,14 +33,14 @@ begin
 
 	-- Loop and each decimals to the string
 	-- to be ablee to print as PI.
-	for j in 1..length+1 loop
+	for j in 1..length loop
 		-- Set and initialize q as 0
 		q := 0;
 
 		-- For loop each until the i is zero
 		for i in reverse 1..length loop
-			x := 10 * arrayDec(i-1) + q*i;
-			arrayDec(i-1) := x mod (2*i-1);
+			x := 10 * arrayDec(i) + q*i;
+			arrayDec(i) := x mod (2*i-1);
 			q := x / (2*i-1);
 		end loop;
 
@@ -74,6 +74,6 @@ begin
 	end loop;
 	
 	-- Write and print the result
-	result := result & trim(integer'Image(predigit), both) & "\n";
+	result := result & trim(integer'Image(predigit), both);
 	put(result);
 end spigot;
