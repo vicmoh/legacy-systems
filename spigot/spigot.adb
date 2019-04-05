@@ -18,7 +18,7 @@ procedure spigot is
 	result: unbounded_string;
 	userInputSize, length, nines, predigit, numOfDec: integer := 1;
 	x, q: integer := 1;
-	arrayDec: array (integer range 0..3333) of integer;
+	arrayDec: array (integer range 1..3334) of integer;
 begin
 	-- Declare variable for spigot function
 	put_line("Enter the filename for the output: ");
@@ -26,7 +26,7 @@ begin
 	
 	-- Initialize the array for the decimals
 	numOfDec := 1000;
-	length := (10 * numOfDec/3) + 1;
+	length := 3334;
 	for i in 1..length loop
 		arrayDec(i) := 2;
 	end loop;
