@@ -77,7 +77,7 @@ begin
     elsif total > 2 then
     	put("total = "); put_line(integer' image(total));
     else
-	put("total = "); put_line(integer' image(total));
+		put("total = "); put_line(integer' image(total));
     end if;
     
     -- looping in ada

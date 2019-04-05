@@ -4,6 +4,10 @@
 # c
 spigot: fortran
 
+ada:
+	gnatmake -Wall ./spigot/spigot.ada
+	./spigot
+
 fortran:
 	gfortran -Wall ./spigot/spigot.f95
 	./a.out
