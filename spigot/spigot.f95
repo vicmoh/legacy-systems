@@ -8,15 +8,15 @@ program main
     integer :: length=0, nines=0, predigit=0
     integer :: numOfDec = 1000
     integer :: q, x, i, k, j
-    integer, dimension(0: 3333) :: array
-    Character (len = 9999) :: result = ""
+    integer, dimension(0: 9999) :: array
+    character (len = 9999) :: result = ""
 
     ! Open file to write data to a text file
     open(1, file = 'fortran_output.txt', status = 'new')
 
     ! Define the length of the array
     length = (10 * numOfDec/3) + 1
-    do i = 0, 2000
+    do i = 0, length-1, 1
         array(i) = 2
     end do
     
@@ -26,12 +26,10 @@ program main
         q = 0
 
         ! For loop each until the i is zero
-        i = length
-        do while (i < length)
+        do i = length, 1, -1
             x = 10 * array(i-1) + q*i;
             array(i-1) = mod(x, (2*i-1));
             q = x / (2*i-1);
-            i = i - 1
         end do 
 
         ! Find the remainder of q from mod 10
@@ -46,8 +44,8 @@ program main
             nines = nines + 1
         else if (q == 10) then
             result = trim(result) // trim(convert(predigit+1))
-            do k = 0, nines
-                result = trim(result) // trim("0")
+            do k = 0, nines-1
+                result = trim(result) // "0"
             end do
             predigit = 0
             nines = 0
@@ -55,8 +53,8 @@ program main
             result = trim(result) // trim(convert(predigit))
             predigit = q
             if (nines /= 0) then
-                do k = 0, nines
-                    result = trim(result) // trim("9")
+                do k = 0, nines-1
+                    result = trim(result) // "9"
                 end do
                 nines = 0
             end if 
@@ -64,7 +62,7 @@ program main
     end do
 
     ! write the final result and close the file 
-    write(1, *) result, "\n"
+    write(1, '(a)') result
     close(1)
 
     !----------------------------------------------
@@ -97,10 +95,8 @@ program main
             result = "7"
         else if (val == 8) then
             result = "8"
-        else if (val == 9) then
-            result = "9"
         else
-            result = "0"
+            result = "9"
         end if
     end function
 end program main
