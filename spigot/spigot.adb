@@ -8,16 +8,16 @@ with Ada.Strings; use Ada.Strings;
 with Ada.Strings.Fixed; use Ada.Strings.Fixed;
 with Ada.Strings.Unbounded; use Ada.Strings.Unbounded;
 with Ada.Strings.Unbounded.Text_IO; use Ada.Strings.Unbounded.Text_IO;
-with Ada.Characters.Handling; use Ada.Characters.Handling;
-with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
+-- with Ada.Characters.Handling; use Ada.Characters.Handling;
+-- with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
 -- Run program
 procedure spigot is
 	-- Declare variables
 	userInput: string(1..256);
 	result: unbounded_string;
-	userInputSize, length, nines, predigit, numOfDec: integer;
-	x, q: integer;
+	userInputSize, length, nines, predigit, numOfDec: integer := 1;
+	x, q: integer := 1;
 	arrayDec: array (integer range 0..3333) of integer;
 begin
 	-- Declare variable for spigot function
@@ -75,5 +75,5 @@ begin
 	
 	-- Write and print the result
 	result := result & trim(integer'Image(predigit), both) & "\n";
-	put_line(result);
+	put(result);
 end spigot;

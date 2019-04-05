@@ -14,12 +14,9 @@ RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U spigot%b		spigot.adb		6210cccf NE OO SU IL
+U spigot%b		spigot.adb		0e9cbb3d NE OO SU IL
 W ada%s			ada.ads			ada.ali
-W ada.characters%s	a-charac.ads		a-charac.ali
-W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
-W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 W ada.strings%s		a-string.ads		a-string.ali
 W ada.strings.fixed%s	a-strfix.adb		a-strfix.ali
 W ada.strings.unbounded%s  a-strunb.adb		a-strunb.ali
@@ -33,11 +30,9 @@ Z system.standard_library%s  s-stalib.adb	s-stalib.ali
 
 D ada.ads		20180524051735 76789da1 ada%s
 D a-charac.ads		20180524051735 2d3ec45b ada.characters%s
-D a-chahan.ads		20180524051735 1601a50f ada.characters.handling%s
 D a-chlat1.ads		20180524051735 66457d31 ada.characters.latin_1%s
 D a-except.ads		20180524051735 291912d5 ada.exceptions%s
 D a-finali.ads		20180524051736 bf4f806b ada.finalization%s
-D a-inteio.ads		20180524051736 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20180524051734 e4a01f64 ada.io_exceptions%s
 D a-stream.ads		20180524051735 119b8fb3 ada.streams%s
 D a-string.ads		20180524051735 90ac6797 ada.strings%s
@@ -47,11 +42,10 @@ D a-strunb.ads		20180524051736 8098c91f ada.strings.unbounded%s
 D a-suteio.ads		20180524051734 26d8e9aa ada.strings.unbounded.text_io%s
 D a-tags.ads		20180524051736 491b781d ada.tags%s
 D a-textio.ads		20180524051736 881db35a ada.text_io%s
-D a-tiinio.ads		20180524051734 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20180524051736 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051734 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051734 e53d8b8e interfaces.c_streams%s
-D spigot.adb		20190405233654 ecd72072 spigot%b
+D spigot.adb		20190405234059 60117b2b spigot%b
 D system.ads		20180524051735 085b6ffb system%s
 D s-atocou.ads		20180524051736 b45c2d8d system.atomic_counters%s
 D s-crtl.ads		20180524051734 0ebbdb71 system.crtl%s
@@ -75,36 +69,29 @@ D s-traent.ads		20180524051734 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20180524051735 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180524051736 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 20e8 21|6r6 6r23 7r6 7r23 8r6 8r29 9r6 9r33 10r6 10r41 11r6 11r35
-. 12r6 12r31
-X 2 a-charac.ads
-16K13*Characters 18e19 21|11r10 11r39
-X 3 a-chahan.ads
-36K24*Handling 159e28 21|11w21 11r50
-X 7 a-inteio.ads
-18K13*Integer_Text_IO[17|46] 21|12w10 12r35
-X 10 a-string.ads
-16K13*Strings 35e16 21|7w10 7r27 8r10 8r33 9r10 9r37 10r10 10r45
-33n37*Both{33E9} 21|58r76 65r74 77r58
-X 11 a-strfix.ads
-18K21*Fixed 251e22 21|8w18 8r41
-195V13*Trim{string} 21|58s44 65s44 77s28
-X 13 a-strunb.ads
-76K21*Unbounded 491e26 21|9w18 9r45 10r18 10r53
-79R9*Unbounded_String<6|43R9> 474e14 21|18r17
-123V14*"&"{79R9} 21|58s42 60s50 65s42 69s58 77s26 77s64
-X 14 a-suteio.ads
-39K31*Text_IO 61e34 21|10w28 10r63
-55U14*Put_Line 21|78s9
-X 16 a-textio.ads
-49K13*Text_IO 471e16 21|6w10 6r27
-249U14*Get_Line 21|25s9
-263U14*Put_Line 21|24s9
-X 21 spigot.adb
+16K9*Ada 20e8 18|6r6 6r23 7r6 7r23 8r6 8r29 9r6 9r33 10r6 10r41
+X 8 a-string.ads
+16K13*Strings 35e16 18|7w10 7r27 8r10 8r33 9r10 9r37 10r10 10r45
+33n37*Both{33E9} 18|58r76 65r74 77r58
+X 9 a-strfix.ads
+18K21*Fixed 251e22 18|8w18 8r41
+195V13*Trim{string} 18|58s44 65s44 77s28
+X 11 a-strunb.ads
+76K21*Unbounded 491e26 18|9w18 9r45 10r18 10r53
+79R9*Unbounded_String<5|43R9> 474e14 18|18r17
+123V14*"&"{79R9} 18|58s42 60s50 65s42 69s58 77s26 77s64
+X 12 a-suteio.ads
+39K31*Text_IO 61e34 18|10w28 10r63
+53U14*Put 18|78s9
+X 14 a-textio.ads
+49K13*Text_IO 471e16 18|6w10 6r27
+249U14*Get_Line 18|25s9
+263U14*Put_Line 18|24s9
+X 18 spigot.adb
 15U11*spigot 15b11 79l5 79t11
 17a9 userInput{string} 25m18
-18r9 result{13|79R9} 58m25 58r35 60m33 60r43 65m25 65r35 69m41 69r51 77m9
-. 77r19 78r18
+18r9 result{11|79R9} 58m25 58r35 60m33 60r43 65m25 65r35 69m41 69r51 77m9
+. 77r19 78r13
 19i9 userInputSize{integer} 25m29
 19i24 length{integer} 29m9 30r21 36r21 41r37
 19i32 nines{integer} 56m25 56r34 59r37 63m25 67r29 68r45 71m33
@@ -118,12 +105,12 @@ X 21 spigot.adb
 41i21 i{integer} 42r44 42r53 43r34 43r51 44r37
 59i29 k{integer}
 68i37 k{integer}
-X 22 system.ads
+X 19 system.ads
 67M9*Address
-X 30 s-memory.ads
-53V13*Alloc{22|67M9} 103i<c,__gnat_malloc>22
+X 27 s-memory.ads
+53V13*Alloc{19|67M9} 103i<c,__gnat_malloc>22
 68U14*Free 104i<c,__gnat_free>22
-76V13*Realloc{22|67M9} 105i<c,__gnat_realloc>22
-X 36 s-stalib.adb
+76V13*Realloc{19|67M9} 105i<c,__gnat_realloc>22
+X 33 s-stalib.adb
 93U14 Break_Start 94i<c,__gnat_break_start>22
 
