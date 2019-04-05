@@ -70,6 +70,7 @@ int main(int argc, char** argv){
 	// Write the output string to a file
 	char* outputString = spigot(1000);
 	printf("Writing...\n%s\n", outputString);
+	strcat(outputString, "\n\0");
 	write(fileName, outputString);
 
 	// Free and return
