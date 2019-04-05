@@ -34,6 +34,17 @@ def spigot(numOfDec = 1000):
         # Return the string output
     return toBeReturn
 
+# Write to an outout file
+# @filename for the output
+# @string to be outputed
+def write(filename, string):
+    file = open(filename, "w")
+    file.write(string)
+    file.close
+
 # Main function to run the program
 # for organizing the code.
-print(spigot())
+print("Enter the filename to output: ")
+val = raw_input()
+result = spigot()
+write(val, result)

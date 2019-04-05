@@ -52,7 +52,7 @@ char* spigot(int numOfDec){
  */
 void write(char* fileName, char* string){
 	printf("fileName = |%s|\n", fileName);
-	FILE* file = fopen(fileName,  "w+");
+	FILE* file = fopen(fileName,  "w");
 	fprintf(file, "%s", string);
 	fclose(file);
 }// End file
