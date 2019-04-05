@@ -50,7 +50,7 @@ char* spigot(int numOfDec){
  * @string to be outputed
  */
 void write(char* fileName, char* string){
-	printf("fileName = %s\n", fileName);
+	printf("fileName = |%s|\n", fileName);
 	FILE* file = fopen(fileName,  "w+");
 	fprintf(file, "%s", string);
 	fclose(file);
@@ -63,7 +63,7 @@ int main(int argc, char** argv){
 	// Get the output file name
 	char* fileName = calloc(256, sizeof(char));
 	printf("Enter the filename to output: \n");
-	fgets(fileName, 256, stdin);
+	scanf("%s", fileName);
 
 	// Write the output string to a file
 	char* outputString = spigot(1001);

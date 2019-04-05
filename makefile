@@ -2,13 +2,14 @@
 
 # A4
 # c
-spigot: spigot_compile spigot_run
+spigot: c
 	
-spigot_compile:
+c:
 	gcc -Wall -std=c11 ./spigot/spigot.c -o ./spigot/run	
-
-spigot_run:
 	./spigot/run
+
+py:
+	python spigot.py
 
 # ada
 ada: ada_gnat ada_run 
