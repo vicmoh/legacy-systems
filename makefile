@@ -9,7 +9,7 @@ c:
 	./spigot/run
 
 py:
-	python spigot.py
+	python ./spigot/spigot.py
 
 # ada
 ada: ada_gnat ada_run 

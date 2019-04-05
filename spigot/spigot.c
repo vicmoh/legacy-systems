@@ -9,7 +9,7 @@
 
 /**
  * Spigot function to find PI.
- * @return malloc string of the resultt. Should be freed.
+ * @return malloc string of the result. Should be freed.
  */
 char* spigot(int numOfDec){
 	char* toBeReturn = calloc(1024, sizeof(char));
@@ -26,7 +26,8 @@ char* spigot(int numOfDec){
     for (k = numOfDec; k > 0; k -= 14) {
         d = 0;
         i = k;
-        for (;;) {
+		// Loop until i equal to 0
+        while (1) {
             d += array[i] * 10000;
             b = 2 * i - 1;
 			// Calculate and find the remainder
@@ -66,7 +67,7 @@ int main(int argc, char** argv){
 	scanf("%s", fileName);
 
 	// Write the output string to a file
-	char* outputString = spigot(1001);
+	char* outputString = spigot(1000);
 	printf("Writing...\n%s\n", outputString);
 	write(fileName, outputString);
 
