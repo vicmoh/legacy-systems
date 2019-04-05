@@ -12,11 +12,12 @@ def spigot(numOfDec = 1000):
     predigit = 0
     q = 0
     x = 0
+    numOfDec = 1000
     # Define the length of the array
     length = (10 * numOfDec/3) +1
     array = []
 	# Initialize the array for the decimals
-    for i in range(0, length):
+    for i in range(0, int(length)):
 		array.insert(i, 2)
 	# Loop and each decimals to the string
 	# to be ablee to print as PI.
@@ -24,15 +25,15 @@ def spigot(numOfDec = 1000):
 		# Set and initialize q as 0
 		q = 0
         # For loop each until the i is zero
-		i = length
+		i = int(length)
 		while i > 0:
 			x = 10 * array[i-1] + q*i
-			array[i-1] = x % (2*i-1)
+			array.insert(i-1, (x % (2*i-1)))
 			q = x / (2*i-1)
-			i-=1
+			i = i - 1
 		# Find the remainder of q from mod 10
 		# then assign to the fist index.
-		array[0] = q % 10
+		array.insert(0, (q % 10))
 		q = q / 10
 		# If q is nine the counter the number of nine
 		# else if it's 10 print the predigit plus 1 and so on.
