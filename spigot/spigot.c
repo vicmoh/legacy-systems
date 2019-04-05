@@ -11,39 +11,71 @@
  * Spigot function to find PI.
  * @return malloc string of the result. Should be freed.
  */
-char* spigot(int numOfDec){
-	char* toBeReturn = calloc(1024, sizeof(char));
-	strcpy(toBeReturn, "0");
-	// Declare varibles
-	int array[numOfDec + 1];
-    int i, k, b, d, c = 0;
+char* spigot() {
+	// Declare variables for spigot function
+	char* result = calloc(1024, sizeof(char));
+	int length, nines=0, predigit=0,numOfDec=1000;
+	int q = 0, x;
 
-	// For loop and initialize the array
-    for (i = 0; i < numOfDec; i++) {
-        array[i] = 2000;
-    }// End for
+	// Define the length of the array
+	length = (10 * numOfDec/3) +1;
+	int array[length];
 
-	// For loop
-    for (k = numOfDec; k > 0; k -= 14) {
-        d = 0;
-        i = k;
-		// Loop until i equal to 0
-        while (1) {
-            d += array[i] * 10000;
-            b = 2 * i - 1;
-			// Calculate and find the remainder
-            array[i] = d % b;
-            d /= b;
-            i--;
-            if (i == 0) break;
-            d *= i;
-        }//End while
-        sprintf(toBeReturn, "%s%.4d", toBeReturn, c + d / 10000);
-		toBeReturn = realloc(toBeReturn, sizeof(char) * (strlen(toBeReturn) + 8));
-        c = d % 10000;
-    }// End for loop
-	
-	return toBeReturn;
+	// Initialize the array for the decimals
+	for (int i=0; i<length; i=i+1){
+		array[i] = 2;
+	}//End of for
+
+	// Loop and each decimals to the string
+	// to be ablee to print as PI.
+	for (int j=1; j<=1000; j=j+1) {
+		// Set and initialize q as 0
+		q = 0;
+
+		// For loop each until the i is zero
+		for (int i=length; i>0; i--) {
+			x = 10 * array[i-1] + q*i;
+			array[i-1] = x % (2*i-1);
+			q = x / (2*i-1);
+		}//End for loop
+		
+		// Find the remainder of q from mod 10
+		// then assign to the fist index.
+		array[0] = q % 10;
+		q = q / 10;
+
+		// If q is nine the counter the number of nine
+		// else if it's 10 print the predigit plus 1 and so on.
+		// Basically find the next PI sequence and assign it to a string.
+		if (q == 9){
+			nines++;
+		}else if (q == 10) {
+			sprintf(result, "%s%d", result, predigit+1);
+			result = realloc(result, sizeof(char) * (strlen(result)+8));
+			for (int k=0; k<nines; k=k+1){
+				sprintf(result, "%s%d", result, 0);
+				result = realloc(result, sizeof(char) * (strlen(result)+8));
+			}// End for loop
+			predigit = 0;
+			nines = 0;
+		}else {
+			sprintf(result, "%s%d", result, predigit);
+			result = realloc(result, sizeof(char) * (strlen(result)+8));
+			predigit = q;
+			if (nines != 0) {
+				for (int k=0; k<nines; k=k+1){
+					sprintf(result, "%s%d", result, 9);
+					result = realloc(result, sizeof(char) * (strlen(result)+8));
+				}// End for loop
+				nines = 0;
+			}// End if
+		}//End if
+	}// End for loop
+
+	// Return the result
+	sprintf(result, "%s%d\n", result, predigit);
+	result = realloc(result, sizeof(char) * (strlen(result)+8));
+	return result;
 }// End spigot function
 
 /**
@@ -68,9 +100,8 @@ int main(int argc, char** argv){
 	scanf("%s", fileName);
 
 	// Write the output string to a file
-	char* outputString = spigot(1000);
+	char* outputString = spigot();
 	printf("Writing...\n%s\n", outputString);
-	strcat(outputString, "\n\0");
 	write(fileName, outputString);
 
 	// Free and return
