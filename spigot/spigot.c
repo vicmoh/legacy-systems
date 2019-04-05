@@ -13,6 +13,7 @@
  */
 char* spigot(int numOfDec){
 	char* toBeReturn = calloc(1024, sizeof(char));
+	strcpy(toBeReturn, "0");
 	// Declare varibles
 	int array[numOfDec + 1];
     int i, k, b, d, c = 0;

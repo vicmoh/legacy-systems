@@ -4,7 +4,7 @@
 def spigot(numOfDec = 1000):
     # declare variable
     array = []
-    toBeReturn = ''
+    toBeReturn = '0'
     c = 0
     
     # For loop and initialize the array
