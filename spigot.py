@@ -28,7 +28,7 @@ def spigot(numOfDec = 1000):
 		i = int(length)
 		while i > 0:
 			x = 10 * array[i-1] + q*i
-			array.insert(i-1, (x % (2*i-1)))
+			array[i-1] = x % (2*i-1)
 			q = x / (2*i-1)
 			i = i - 1
 		# Find the remainder of q from mod 10
@@ -69,5 +69,5 @@ def write(filename, string):
 # for organizing the code.
 print("Enter the filename to output: ")
 val = raw_input()
-result = spigot()
+result = spigot(1000)
 write(val, result)
