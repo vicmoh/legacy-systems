@@ -19,10 +19,12 @@ procedure spigot is
 	userInputSize, length, nines, predigit, numOfDec: integer := 1;
 	x, q: integer := 1;
 	arrayDec: array (integer range 1..3334) of integer;
+	file : File_Type;
 begin
 	-- Declare variable for spigot function
 	put_line("Enter the filename for the output: ");
 	get_line(userInput, userInputSize);
+	Create(file, Out_File, userInput);
 	
 	-- Initialize the array for the decimals
 	numOfDec := 1000;
@@ -75,5 +77,6 @@ begin
 	
 	-- Write and print the result
 	result := result & trim(integer'Image(predigit), both);
-	put(result);
+	Put_Line(file, result);
+  	Close(file);
 end spigot;

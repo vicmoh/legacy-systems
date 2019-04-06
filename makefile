@@ -2,18 +2,28 @@
 
 # A4
 # c
-spigot: fortran
+ada: ada_compile ada_run
 
-ada:
-	gnatmake -Wall ./spigot/spigot.ada
+fortran: fortran_compile fortran_run
+
+c: c_compile c_run
+
+ada_compile:
+	gnatmake -Wall ./spigot/spigot.adb
+
+ada_run:
 	./spigot
 
-fortran:
+fortran_compile:
 	gfortran -Wall ./spigot/spigot.f95
+
+fortran_run:
 	./a.out
 	
-c:
+c_compile:
 	gcc -Wall -std=c11 ./spigot/spigot.c -o ./run	
+
+c_run:
 	./run
 
 python:

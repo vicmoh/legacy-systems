@@ -10,9 +10,14 @@ program main
     integer :: q, x, i, k, j
     integer, dimension(0: 9999) :: array
     character (len = 9999) :: result = ""
+    character (len = 256) :: input = ""
+
+    ! input file
+    print *, "Enter the file name for output: "
+    read *, input
 
     ! Open file to write data to a text file
-    open(1, file = 'fortran_output.txt', status = 'new')
+    open(1, file = input, status = 'new')
 
     ! Define the length of the array
     length = (10 * numOfDec/3) + 1
