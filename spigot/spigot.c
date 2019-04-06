@@ -74,7 +74,6 @@ char* spigot() {
 	}// End for loop
 
 	// Return the result
-	sprintf(result, "%s%d\n", result, predigit);
 	result = realloc(result, sizeof(char) * (strlen(result)+8));
 	return result;
 }// End spigot function
@@ -85,7 +84,6 @@ char* spigot() {
  * @string to be outputed
  */
 void write(char* fileName, char* string){
-	printf("fileName = |%s|\n", fileName);
 	FILE* file = fopen(fileName,  "w");
 	fprintf(file, "%s", string);
 	fclose(file);
@@ -102,7 +100,6 @@ int main(int argc, char** argv){
 
 	// Write the output string to a file
 	char* outputString = spigot();
-	printf("Writing...\n%s\n", outputString);
 	write(fileName, outputString);
 
 	// Free and return
