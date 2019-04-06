@@ -16,8 +16,8 @@ procedure spigot is
 	-- Declare variables
 	userInput: string(1..256);
 	result: unbounded_string;
-	userInputSize, length, nines, predigit, numOfDec: integer := 1;
-	x, q: integer := 1;
+	userInputSize, length, nines, predigit, numOfDec: integer := 0mak;
+	x, q: integer := 0;
 	arrayDec: array (integer range 1..3334) of integer;
 	file : File_Type;
 begin
@@ -35,7 +35,7 @@ begin
 
 	-- Loop and each decimals to the string
 	-- to be ablee to print as PI.
-	for j in 1..length loop
+	for j in 1..1000 loop
 		-- Set and initialize q as 0
 		q := 0;
 

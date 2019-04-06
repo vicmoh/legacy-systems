@@ -14,7 +14,7 @@ RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U spigot%b		spigot.adb		b74508d9 NE OO SU IL
+U spigot%b		spigot.adb		b279aeb5 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 W ada.strings%s		a-string.ads		a-string.ali
@@ -45,7 +45,7 @@ D a-textio.ads		20180524051736 881db35a ada.text_io%s
 D a-unccon.ads		20180524051736 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180524051734 5ab55268 interfaces%s
 D i-cstrea.ads		20180524051734 e53d8b8e interfaces.c_streams%s
-D spigot.adb		20190405235840 d9c8c8cf spigot%b
+D spigot.adb		20190406001733 dcf46ea3 spigot%b
 D system.ads		20180524051735 085b6ffb system%s
 D s-atocou.ads		20180524051736 b45c2d8d system.atomic_counters%s
 D s-crtl.ads		20180524051734 0ebbdb71 system.crtl%s
@@ -97,7 +97,7 @@ X 18 spigot.adb
 18r9 result{11|79R9} 60m25 60r35 62m33 62r43 67m25 67r35 71m41 71r51 79m9
 . 79r19 80r24
 19i9 userInputSize{integer} 26m29
-19i24 length{integer} 31m9 32r21 38r21 43r37
+19i24 length{integer} 31m9 32r21 43r37
 19i32 nines{integer} 58m25 58r34 61r37 65m25 69r29 70r45 73m33
 19i39 predigit{integer} 60r63 64m25 67r63 68m25 79r47
 19i49 numOfDec{integer} 30m9
