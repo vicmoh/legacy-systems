@@ -38,12 +38,12 @@ program main
         end do 
 
         ! Find the remainder of q from mod 10
-		! then assign to the fist index.
+        ! then assign to the fist index.
         array(0) = mod(q, 10)
         q = q / 10
 
         ! If q is nine the counter the number of nine
-		! else if it's 10 print the predigit plus 1 and so on.
+        ! else if it's 10 print the predigit plus 1 and so on.
         ! Basically find the next PI sequence and assign it to a string.
         if (q == 9) then
             nines = nines + 1
